@@ -41,7 +41,7 @@
 					}
 				},
 				computed: {
-					eventStringEncoded() => this.compressAndEncode(this.eventString)
+					eventStringEncoded: function() { return this.compressAndEncode(this.eventString); }
 				}
 			});
 			app.mount('#app');
