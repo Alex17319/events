@@ -6,13 +6,19 @@ input {
     width: 100%;
 }
 
-.url-preview {
+.url-preview-row, .url-preview {
     display: flex;
 	flex-direction: row;
-	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: center;
 	gap: 1rem;
+}
+.url-preview-row {
+    flex-wrap: nowrap;
+}
+.url-preview {
+	flex-wrap: wrap;
+	background-color: #f1f1f1;
 }
 .url-preview .url-base {
 	text-transform: uppercase;
@@ -24,6 +30,7 @@ input {
     min-width: 2rem;
 	height: 2rem;
 	width: 2rem;
+	color: #A57BB0;
 }
 .url-preview code {
 	word-break: break-all;
