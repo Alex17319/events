@@ -70,6 +70,7 @@
 				<url-display :url="eventUrl"></url-display>
 				<url-display :url="eventUrlEncoded"></url-display>
 				<url-display :url="eventUrlCompressedEncoded"></url-display>
+				<url-display :url="eventUrlSmallestEncoded"></url-display>
 			</main>
 		</div>
 		<template id="url-display">
@@ -216,7 +217,13 @@
 				},
 				asyncComputed: {
 					async eventStringCompressedEncoded() { return await this.compressAndEncode(this.eventString); },
-					async eventUrlCompressedEncoded() { return new EventUrlInfo(this.urlBase, this.eventStringCompressedEncoded) },
+					async eventUrlCompressedEncoded() { return new EventUrlInfo(this.urlBase, await this.eventStringCompressedEncoded) },
+					async eventUrlSmallestEncoded() {
+						const a = this.eventStringEncoded;
+						const b = await this.eventUrlCompressedEncoded;
+						const smallest = a.length <= b.length ? a : b;
+						return new EventUrlInfo(this.urlBase, smallest);
+					},
 				}
 			});
 			app.use(AsyncComputed);
