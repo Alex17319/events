@@ -17,7 +17,15 @@ input {
 .url-preview img {
     padding: 0;
 	margin: 0;
+	height: 2rem;
 }
 .url-preview code {
 	word-break: break-all;
+}
+.url-preview button {
+	background-color: transparent;
+	border: none;
+}
+.url-preview button img {
+	height: 2rem;
 }
