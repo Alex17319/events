@@ -14,8 +14,15 @@ input {
 	align-items: center;
 	gap: 1rem;
 }
+.url-preview .url-base {
+	text-transform: uppercase;
+	font-size: 0.7em;
+	font-weight: bold;
+	color: #A57BB0;
+}
 .url-preview svg.hash-icon {
-    height: 2rem;
+    min-width: 2rem;
+	height: 2rem;
 	width: 2rem;
 }
 .url-preview code {
