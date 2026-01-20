@@ -25,6 +25,8 @@ input {
 .url-preview button {
 	background-color: transparent;
 	border: none;
+	padding: 0;
+	min-width: 2rem;
 }
 .url-preview button img {
 	height: 2rem;
