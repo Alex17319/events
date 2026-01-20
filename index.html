@@ -29,10 +29,10 @@
 					};
 				},
 				methods: {
-					async function compressAndEncode(str) {
+					async compressAndEncode(str) {
 						return await unibinary.encode(await compress(str));
 					},
-					async function decodeAndDecompress(str) {
+					async decodeAndDecompress(str) {
 						try {
 							return await decompress(unibinary.decode(str));
 						} catch {
