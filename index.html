@@ -15,6 +15,7 @@
 				<h1>Events</h1>
 				<p v-text="eventString">Sample text</p>
 				<p v-text="eventStringEncoded">Sample text</p>
+				<p v-text="eventStringCompressedEncoded">Sample text</p>
 			</main>
 		</div>
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -30,19 +31,30 @@
 					};
 				},
 				methods: {
+					encode(str) {
+						return unibinary.encodeString(str));
+					},
 					async compressAndEncode(str) {
 						return await unibinary.encode(await compress(str));
 					},
+					decode(str) {
+						try {
+							return unibinary.decodeString(str);
+						} catch {
+							return 'invalid link';
+						}
+					}
 					async decodeAndDecompress(str) {
 						try {
 							return await decompress(unibinary.decode(str));
 						} catch {
-							return 'invalid unicode string';
+							return 'invalid link';
 						}
 					}
 				},
 				asyncComputed: {
-					async eventStringEncoded() { return await this.compressAndEncode(this.eventString); }
+					async eventStringCompressedEncoded() { return await this.compressAndEncode(this.eventString); },
+					async eventStringEncoded() { return await this.encode(this.eventString); }
 				}
 			});
 			app.use(AsyncComputed)
