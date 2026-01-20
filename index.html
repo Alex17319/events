@@ -74,8 +74,7 @@
 						theme: "",
 						rng: this.randomInt(0,999),
 						imageUrl: "",
-						description: "",
-						eventString: "My+Event`Location+TBA"
+						description: ""
 					};
 				},
 				methods: {
@@ -103,9 +102,22 @@
 						return Math.floor(Math.random() * (min - max) + min);
 					}
 				},
+				computed: {
+					eventString() {
+						return this.title + "`" +
+							this.location + "`" +
+							this.datetime + "`" +
+							this.rsvp + "`" +
+							this.rsvpDate + "`" +
+							this.theme + "`" +
+							(this.theme ? this.rng : "") + "`" +
+							this.imageUrl + "`" +
+							this.description;
+					},
+					eventStringEncoded() { return this.encode(this.eventString); }
+				},
 				asyncComputed: {
-					async eventStringCompressedEncoded() { return await this.compressAndEncode(this.eventString); },
-					async eventStringEncoded() { return await this.encode(this.eventString); }
+					async eventStringCompressedEncoded() { return await this.compressAndEncode(this.eventString); }
 				}
 			});
 			app.use(AsyncComputed)
