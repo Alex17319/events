@@ -174,8 +174,9 @@
 					const urlBase = this.getUrlBase();
 					const urlHash = window.location.hash;
 
-					if (urlHash?.match(/^#.+/)) {
-						
+					if (/^#.+/.test(urlHash)) {
+						let eventString = urlHash.substring(1); // remove the #
+						let evt = this.parseEventString(eventString) || this.parseEventString(this.decode(eventString));
 					}
 					
 					return {
@@ -205,14 +206,14 @@
 						try {
 							return unibinary.decodeString(str);
 						} catch {
-							return 'invalid link';
+							return null;
 						}
 					},
 					async decodeAndDecompress(str) {
 						try {
 							return await decompress(unibinary.decode(str));
 						} catch {
-							return 'invalid link';
+							return null;
 						}
 					},
 					formatDate(datetime) {
@@ -223,11 +224,16 @@
 						const match = datetime?.match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/);
 						return match && match[0]?.replace(/\D/g, '') || '';
 					},
-					parseDate(datestr) {
+					parseDatetime(datestr) {
 						if (!datestr) return null;
-						if (!/^(\d\d\d\d\d\d\d\d)(\d\d\d\d)?\w*$/.test(datestr)) return null;
-						const matches = datestr.match(/^((?<yyyy>\d\d\d\d)(?<MM>\d\d)(?<dd>\d\d))((?<hh>\d\d)(?<mm>\d\d))?(<t>\w*)$/);
-						return null;
+						const match = datestr.match(/^((?<yyyy>\d\d\d\d)(?<MM>\d\d)(?<dd>\d\d))((?<hh>\d\d)(?<mm>\d\d))?$/);
+						if (!match) return null;
+						const groups = match.groups;
+						const date = (groups.yyyy && groups.MM && groups.dd) ? (groups.yyyy + "-" + groups.MM + "-" + groups.dd) : null;
+						const time = (groups.hh && groups.mm) ? (groups.hh + ":" + groups.mm) : null;
+						if (!date) return null;
+						if (!!groups.hh !== !!groups.mm) return null; // time is partly present - fail fast by returning null
+						return date + (time ? "T" + time : "");
 					},
 					randomInt(min, max) { // returns a number inclusive of min and max
 						return Math.floor(Math.random() * (max + 1 - min) + min);
@@ -238,10 +244,24 @@
 					parseEventString(str) {
 						if (!str) return null;
 						const arr = str.split("`");
+						if (arr.length !== 8) return null;
+
+						const themeMatch = arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
+						const theme = themeMatch && themeMatch.groups.theme;
+						const rng = themeMatch && themeMatch.groups.theme || this.randomInt(0,999);
+						
 						return {
-							title: /^[^`]+$/.test(arr[0]) ? arr[0] : "",
-							location: /^[^`]+$/.test(arr[1]) ? arr[1] : "",
-							startDatetime: /^(\d\d\d\d\d\d\d\d)(\d\d\d\d)?\w*$/.test(arr[2]) ? arr[2] : ""
+							title: arr[0] || "",
+							location: arr[1] || "",
+							startDatetime: this.parseDatetime(arr[2]) || "",
+							endDatetime: this.parseDatetime(arr[3]) || "",
+							timezone: arr[4] || "",
+							rsvp: arr[5] || "",
+							rsvpDate: this.parseDatetime(arr[6]) || "",
+							imageUrl: !theme ? arr[7] : "",
+							theme: theme || "",
+							rng: rng,
+							description: arr[8] || ""
 						}
 					}
 				},
@@ -251,6 +271,7 @@
 							this.location + "`" +
 							this.formatDatetime(this.startDatetime) + "`" +
 							this.formatDatetime(this.endDatetime) + "`" +
+							this.timezone + "`" +
 							this.rsvp + "`" +
 							this.formatDate(this.rsvpDate) + "`" +
 							(this.imageUrl || (this.theme + (this.theme ? this.rng : ""))) + "`" +
