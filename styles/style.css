@@ -5,3 +5,10 @@ textarea {
 input {
     width: 100%;
 }
+
+.url-base {
+    display: inline-flex;
+}
+.url-hash {
+    display: inline-flex;
+}
