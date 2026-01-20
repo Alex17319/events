@@ -72,7 +72,7 @@
 						rsvp: "",
 						rsvpDate: "",
 						theme: "",
-						rng: 123,
+						rng: this.randomInt(0,999),
 						imageUrl: "",
 						description: "",
 						eventString: "My+Event`Location+TBA"
@@ -98,6 +98,9 @@
 						} catch {
 							return 'invalid link';
 						}
+					},
+					randomInt(min, max) {
+						return Math.floor(Math.random() * (min - max) + min);
 					}
 				},
 				asyncComputed: {
