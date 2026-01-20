@@ -104,12 +104,22 @@
 					this.compatibleWithIG = this.charCount <= 245;
 				}
 			}
+			
 			const urlDisplayComponent = {
+				template: "#url-display",
 				props: {
 					url: EventUrlInfo
 				},
-				template: "#url-display"
+				methods: {
+					copyToClipboard(str, e) {
+						navigator.clipboard.writeText(str);
+						const img = e.target.tagName.toLowerCase() === "img" ? e.target : e.target.querySelector("img");
+						img.setAttribute("src", "resources/bootstrap-clipboard-check.svg");
+						setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
+					}
+				}
 			};
+			
 			const app = Vue.createApp({
 				components: {
 					UrlDisplay: urlDisplayComponent
@@ -156,12 +166,6 @@
 					},
 					getUrlBase() {
 						return (window.location.host + window.location.pathname).replace(/[\/\\]+$/,'');
-					},
-					copyToClipboard(str, e) {
-						navigator.clipboard.writeText(str);
-						const img = e.target.tagName.toLowerCase() === "img" ? e.target : e.target.querySelector("img");
-						img.setAttribute("src", "resources/bootstrap-clipboard-check.svg");
-						setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
 					}
 				},
 				computed: {
