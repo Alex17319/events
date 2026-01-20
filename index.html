@@ -18,6 +18,7 @@
 			</main>
 		</div>
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="https://unpkg.com/vue-async-computed@4.0.1"></script>
 		<script src="dependencies/UniBinary.js"></script>
 		<script src="dependencies/compress.js"></script>
 		<script src="scripts/index.js"></script>
@@ -40,7 +41,7 @@
 						}
 					}
 				},
-				computed: {
+				asyncComputed: {
 					async eventStringEncoded() { return await this.compressAndEncode(this.eventString); }
 				}
 			});
