@@ -19,6 +19,7 @@ input {
 .url-preview {
 	flex-wrap: wrap;
 	flex-grow: 1;
+	padding: 1rem;
 	background-color: #f1f1f1;
 }
 .url-preview .url-base {
@@ -37,7 +38,7 @@ input {
 	word-break: break-all;
 	flex-grow: 1;
 }
-.url-preview .copy-button {
+.url-preview-row .copy-button {
 	background-color: transparent;
 	border: none;
 	color: #4a4a4a;
@@ -46,11 +47,11 @@ input {
 	width: 2.5rem;
 	height: 2.5rem;
 }
-.url-preview .copy-button svg {
+.url-preview-row .copy-button svg {
 	height: 2.5rem;
 	width: 2.5rem;
 }
-.url-preview .copy-button svg.copied {
+.url-preview-row .copy-button svg.copied {
 	color: #982c61;
 }
 
