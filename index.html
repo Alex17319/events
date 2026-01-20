@@ -145,9 +145,9 @@
 					},
 					copyToClipboard(str, e) {
 						navigator.clipboard.writeText(str);
-						
-						//var tooltip = document.getElementById("myTooltip");
-						//tooltip.innerHTML = "Copied: " + str;
+						const img = e.target.querySelector("img");
+						img.setAttribute("src", "resources/bootstrap-clipboard-check.svg");
+						document.setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
 					}
 				},
 				computed: {
