@@ -16,42 +16,56 @@
 			<main>
 				<h1>Events</h1>
 				<form>
-					<p>
-						<label for="title">Title</label>
-	  					<input type="text" id="title" name="title" v-model="title" placeholder="My Event">
-					</p>
-					<p>
-						<label for="location">Location</label>
-	  					<input type="text" id="location" name="location" v-model="location" placeholder="Location TBA">
-					</p>
-					<p>
-						<label for="datetime">Date & time</label>
-	  					<input type="datetime-local" id="datetime" name="datetime" v-model="datetime" placeholder="2026-01-01">
-					</p>
-					<p>
-						<label for="rsvp">RSVP</label>
-	  					<input type="text" id="rsvp" name="rsvp" v-model="rsvp" placeholder="eventorganiser@example.com">
-					</p>
-					<p>
-						<label for="rsvp-date">RSVP Date</label>
-	  					<input type="date" id="rsvp-date" name="rsvp-date" v-model="rsvpDate" placeholder="2026-01-01">
-					</p>
-					<p>
-						<label for="theme">Theme</label>
-	  					<input type="text" id="theme" name="theme" v-model="theme" placeholder="party">
-					</p>
-					<p>
-						<label for="rng">RNG</label>
-	  					<input type="number" min="0" max="999" step="1" id="rng" name="rng" v-model="rng">
-					</p>
-					<p>
-						<label for="image-url">Image URL</label>
-	  					<input type="url" id="image-url" name="image-url" v-model="imageUrl" placeholder="https://example.com/event-poster.png">
-					</p>
-					<p>
-						<label for="description">Description</label>
-	  					<textarea id="description" name="description" v-model="description" placeholder="Description here"></textarea>
-					</p>
+					<div class="row">
+						<div class="col">
+							<label for="title">Title</label>
+		  					<input type="text" id="title" name="title" v-model="title" placeholder="My Event">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label for="location">Location</label>
+		  					<input type="text" id="location" name="location" v-model="location" placeholder="Location TBA">
+						</div>
+						<div class="col">
+							<label for="start-datetime">Start</label>
+		  					<input type="datetime-local" id="start-datetime" name="start-datetime" v-model="startDatetime" placeholder="2026-01-01">
+						</div>
+						<div class="col">
+							<label for="end-datetime">End</label>
+		  					<input type="datetime-local" id="end-datetime" name="end-datetime" v-model="endDatetime" placeholder="2026-01-01">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label for="rsvp">RSVP</label>
+	  						<input type="text" id="rsvp" name="rsvp" v-model="rsvp" placeholder="eventorganiser@example.com">
+						</div>
+						<div class="col">
+							<label for="rsvp-date">RSVP Date</label>
+	  						<input type="date" id="rsvp-date" name="rsvp-date" v-model="rsvpDate" placeholder="2026-01-01">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label for="image-url">Image URL</label>
+	  						<input type="url" id="image-url" name="image-url" v-model="imageUrl" placeholder="https://example.com/event-poster.png">
+						</div>
+						<div class="col">
+							<label for="theme">Theme</label>
+	  						<input type="text" id="theme" name="theme" v-model="theme" placeholder="party">
+						</div>
+						<div class="col">
+							<label for="rng">RNG</label>
+	  						<input type="number" min="0" max="999" step="1" id="rng" name="rng" v-model="rng">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<label for="description">Description</label>
+	  						<textarea id="description" name="description" v-model="description" placeholder="Description here"></textarea>
+						</div>
+					</div>
 				</form>
 				<p v-text="eventString">Sample text</p>
 				<p v-text="eventStringEncoded">Sample text</p>
@@ -69,7 +83,8 @@
 					return {
 						title: "",
 						location: "",
-						datetime: "",
+						startDatetime: "",
+						endDatetime: "",
 						rsvp: "",
 						rsvpDate: "",
 						theme: "",
@@ -107,7 +122,8 @@
 					eventString() {
 						return this.title + "`" +
 							this.location + "`" +
-							this.datetime + "`" +
+							this.startDatetime + "`" +
+							this.endDatetime + "`" +
 							this.rsvp + "`" +
 							this.rsvpDate + "`" +
 							this.theme + "`" +
