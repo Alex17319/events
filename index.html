@@ -21,35 +21,35 @@
 					</p>
 					<p>
 						<label for="location">Location</label>
-	  					<input type="text" id="location" name="location" value="Location TBA">
+	  					<input type="text" id="location" name="location" v-model="location" placeholder="Location TBA">
 					</p>
 					<p>
 						<label for="datetime">Date & time</label>
-	  					<input type="datetime-local" id="datetime" name="datetime" value="2026-01-01">
+	  					<input type="datetime-local" id="datetime" name="datetime" v-model="datetime" placeholder="2026-01-01">
 					</p>
 					<p>
 						<label for="rsvp">RSVP</label>
-	  					<input type="text" id="rsvp" name="rsvp" value="eventorganiser@example.com">
+	  					<input type="text" id="rsvp" name="rsvp" v-model="rsvp" placeholder="eventorganiser@example.com">
 					</p>
 					<p>
 						<label for="rsvp-date">RSVP Date</label>
-	  					<input type="date" id="rsvp-date" name="rsvp-date" value="2026-01-01">
+	  					<input type="date" id="rsvp-date" name="rsvp-date" v-model="rsvpDate" placeholder="2026-01-01">
 					</p>
 					<p>
 						<label for="theme">Theme</label>
-	  					<input type="text" id="theme" name="theme" value="party">
+	  					<input type="text" id="theme" name="theme" v-model="theme" placeholder="party">
 					</p>
 					<p>
 						<label for="rng">RNG</label>
-	  					<input type="number" min="0" max="999" step="1" id="rng" name="rng" value="123">
+	  					<input type="number" min="0" max="999" step="1" id="rng" name="rng" v-model="rng">
 					</p>
 					<p>
 						<label for="image-url">Image URL</label>
-	  					<input type="url" id="image-url" name="image-url" value="https://example.com/event-poster.png">
+	  					<input type="url" id="image-url" name="image-url" v-model="imageUrl" placeholder="https://example.com/event-poster.png">
 					</p>
 					<p>
 						<label for="description">Description</label>
-	  					<input type="text" id="description" name="description" value="Description here">
+	  					<textarea id="description" name="description" v-model="description" placeholder="Description here"></textarea>
 					</p>
 				</form>
 				<p v-text="eventString">Sample text</p>
