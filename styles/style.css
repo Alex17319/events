@@ -32,3 +32,12 @@ input {
 .url-preview button img {
 	height: 2rem;
 }
+
+.url-stats {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
