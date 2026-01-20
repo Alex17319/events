@@ -45,6 +45,7 @@
 					async eventStringEncoded() { return await this.compressAndEncode(this.eventString); }
 				}
 			});
+			app.use(AsyncComputed)
 			app.mount('#app');
 		</script>
 	</body>
