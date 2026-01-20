@@ -71,19 +71,25 @@
 					<div v-text="urlBase"></div>
 					<img src="resources/bootstrap-hash.svg"></img>
 					<code v-text="eventString"></code>
-					<button @click="copyToClipboard(urlBase + '#' + eventString, $event)"></button>
+					<button @click="copyToClipboard(urlBase + '#' + eventString, $event)">
+						<img src="resources/bootstrap-clipboard.svg"></img>
+					</button>
 				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
 					<img src="resources/bootstrap-hash.svg"></img>
 					<code v-text="eventStringEncoded"></code>
-					<button @click="copyToClipboard(urlBase + '#' + eventStringEncoded, $event)"></button>
+					<button @click="copyToClipboard(urlBase + '#' + eventStringEncoded, $event)">
+						<img src="resources/bootstrap-clipboard.svg"></img>
+					</button>
 				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
 					<img src="resources/bootstrap-hash.svg"></img>
 					<code v-text="eventStringCompressedEncoded"></code>
-					<button @click="copyToClipboard(urlBase + '#' + eventStringCompressedEncoded, $event)"></button>
+					<button @click="copyToClipboard(urlBase + '#' + eventStringCompressedEncoded, $event)">
+						<img src="resources/bootstrap-clipboard.svg"></img>
+					</button>
 				</div>
 			</main>
 		</div>
