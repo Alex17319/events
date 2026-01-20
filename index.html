@@ -98,8 +98,8 @@
 							return 'invalid link';
 						}
 					},
-					randomInt(min, max) {
-						return Math.floor(Math.random() * (min - max) + min);
+					randomInt(min, max) { // returns a number inclusive of min and max
+						return Math.floor(Math.random() * (max + 1 - min) + min);
 					}
 				},
 				computed: {
