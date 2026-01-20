@@ -12,13 +12,13 @@ async function compress(str) {
 	
 	// Create a compressed stream.
 	const compressedStream = stream.pipeThrough(
-	new CompressionStream("gzip")
+		new CompressionStream("gzip")
 	);
 	
 	// Read all the bytes from this stream.
 	const chunks = [];
 	for await (const chunk of compressedStream) {
-	chunks.push(chunk);
+		chunks.push(chunk);
 	}
 	return await concatUint8Arrays(chunks);
 }
@@ -35,13 +35,13 @@ async function decompress(compressedBytes) {
 	
 	// Create a decompressed stream.
 	const decompressedStream = stream.pipeThrough(
-	new DecompressionStream("gzip")
+		new DecompressionStream("gzip")
 	);
 	
 	// Read all the bytes from this stream.
 	const chunks = [];
 	for await (const chunk of decompressedStream) {
-	chunks.push(chunk);
+		chunks.push(chunk);
 	}
 	const stringBytes = await concatUint8Arrays(chunks);
 	
