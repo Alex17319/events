@@ -34,7 +34,7 @@ input {
 	margin: 0;
 	height: 2.5rem;
 }
-.url-preview .copy-button img.copied {
+.url-preview .copy-button .copied {
 	height: 2.5rem;
 	color: #A07CB6;
 }
