@@ -8,6 +8,11 @@ input {
 
 .url-preview {
     display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1em;
 }
 .url-preview-base {
 
