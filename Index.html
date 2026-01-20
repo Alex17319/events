@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Events</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./dependencies/reset.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <main>
-        <h1>Events</h1>
-    </main>
-    <script src="index.js"></script>
-    <script src="dependencies/UniBinary.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Events</title>
+		<link rel="stylesheet" href="./style.css">
+		<link rel="stylesheet" href="./dependencies/reset.css">
+		<link rel="icon" href="./favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+		<div id="app">
+			<main>
+				<h1>Events</h1>
+				<p v-text="eventRelUrl"></p>
+			</main>
+		</div>
+		<script>
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					eventRelUrl: "My+Event`Location+TBA"
+				}
+			});		
+		</script>
+		<script src="index.js"></script>
+		<script src="dependencies/UniBinary.js"></script>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</body>
 </html>
