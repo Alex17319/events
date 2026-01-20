@@ -76,9 +76,9 @@
 			<div>
 				<div class="url-preview">
 					<div v-text="url.urlBase"></div>
-					<img src="resources/bootstrap-hash.svg"></img>
+					<img class="hash-icon" src="resources/bootstrap-hash.svg"></img>
 					<code v-text="url.urlHash"></code>
-					<button @click="copyToClipboard(url.fullUrl, $event)">
+					<button class="copy-button" @click="copyToClipboard(url.fullUrl, $event)">
 						<img src="resources/bootstrap-clipboard.svg"></img>
 					</button>
 				</div>
@@ -115,7 +115,14 @@
 						navigator.clipboard.writeText(str);
 						const img = e.target.tagName.toLowerCase() === "img" ? e.target : e.target.querySelector("img");
 						img.setAttribute("src", "resources/bootstrap-clipboard-check.svg");
-						setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
+						img.classList.add("copied");
+						setTimeout(
+							() => {
+								img.setAttribute("src", "resources/bootstrap-clipboard.svg");
+								img.classList.remove("copied");
+							},
+							2000
+						);
 					}
 				}
 			};
