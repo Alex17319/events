@@ -70,14 +70,17 @@
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
 					<div v-text="eventString"></div>
+					<button @click="copyToClipboard(urlBase + eventString, $event)"></button>
 				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
 					<div v-text="eventStringEncoded"></div>
+					<button @click="copyToClipboard(urlBase + eventStringEncoded, $event)"></button>
 				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
 					<div v-text="eventStringCompressedEncoded"></div>
+					<button @click="copyToClipboard(urlBase + eventStringCompressedEncoded, $event)"></button>
 				</div>
 			</main>
 		</div>
@@ -100,7 +103,7 @@
 						rng: this.randomInt(0,999),
 						imageUrl: "",
 						description: "",
-						urlBase: window.location.host + window.location.pathname,
+						urlBase: this.getUrlBase(),
 						urlHash: window.location.hash
 					};
 				},
@@ -127,6 +130,15 @@
 					},
 					randomInt(min, max) { // returns a number inclusive of min and max
 						return Math.floor(Math.random() * (max + 1 - min) + min);
+					},
+					getUrlBase() {
+						return (window.location.host + window.location.pathname).replace(/[\/\\]+$/,'');
+					},
+					copyToClipboard(str, e) {
+						navigator.clipboard.writeText(str);
+						
+						//var tooltip = document.getElementById("myTooltip");
+						//tooltip.innerHTML = "Copied: " + str;
 					}
 				},
 				computed: {
