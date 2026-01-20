@@ -191,6 +191,12 @@
 							return 'invalid link';
 						}
 					},
+					formatDate(date) {
+						return date.toISOString().match(/\d\d\d\d-\d\d-\d\d/)[0].replace(/-/g, '');
+					},
+					formatDateTime(date) {
+						return date.toISOString().match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/)[0].replace(/\D/g, '');
+					},
 					randomInt(min, max) { // returns a number inclusive of min and max
 						return Math.floor(Math.random() * (max + 1 - min) + min);
 					},
@@ -202,10 +208,10 @@
 					eventString() {
 						return this.title + "`" +
 							this.location + "`" +
-							this.startDatetime + "`" +
-							this.endDatetime + "`" +
+							this.formatDateTime(this.startDatetime) + "`" +
+							this.formatDateTime(this.endDatetime) + "`" +
 							this.rsvp + "`" +
-							this.rsvpDate + "`" +
+							this.formatDate(this.rsvpDate) + "`" +
 							this.theme + "`" +
 							(this.theme ? this.rng : "") + "`" +
 							this.imageUrl + "`" +
