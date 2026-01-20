@@ -6,9 +6,12 @@ input {
     width: 100%;
 }
 
-.url-base {
-    display: inline-flex;
+.url-preview {
+    display: flex;
 }
-.url-hash {
-    display: inline-flex;
+.url-preview-base {
+
+}
+.url-preview-hash {
+    
 }
