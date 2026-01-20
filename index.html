@@ -69,18 +69,18 @@
 				</form>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
-					<div v-text="eventString"></div>
-					<button @click="copyToClipboard(urlBase + eventString, $event)"></button>
+					<code v-text="eventString"></code>
+					<button @click="copyToClipboard(urlBase + '#' + eventString, $event)"></button>
 				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
-					<div v-text="eventStringEncoded"></div>
-					<button @click="copyToClipboard(urlBase + eventStringEncoded, $event)"></button>
+					<code v-text="eventStringEncoded"></code>
+					<button @click="copyToClipboard(urlBase + '#' + eventStringEncoded, $event)"></button>
 				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
-					<div v-text="eventStringCompressedEncoded"></div>
-					<button @click="copyToClipboard(urlBase + eventStringCompressedEncoded, $event)"></button>
+					<code v-text="eventStringCompressedEncoded"></code>
+					<button @click="copyToClipboard(urlBase + '#' + eventStringCompressedEncoded, $event)"></button>
 				</div>
 			</main>
 		</div>
