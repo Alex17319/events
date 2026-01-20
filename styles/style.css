@@ -18,9 +18,6 @@ input {
     padding: 0;
 	margin: 0;
 }
-.url-preview-base {
-
-}
-.url-preview-hash {
-    
+.url-preview code {
+	word-break: break-all;
 }
