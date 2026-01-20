@@ -41,7 +41,7 @@
 					}
 				},
 				computed: {
-					eventStringEncoded: function() { return this.compressAndEncode(this.eventString); }
+					async eventStringEncoded() { return await this.compressAndEncode(this.eventString); }
 				}
 			});
 			app.mount('#app');
