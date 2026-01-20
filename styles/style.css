@@ -24,6 +24,7 @@ input {
 .url-preview .copy-button {
 	background-color: transparent;
 	border: none;
+	color: #4a4a4a;
 	padding: 0;
 	min-width: 2.5rem;
 }
