@@ -147,7 +147,7 @@
 						navigator.clipboard.writeText(str);
 						const img = e.target.querySelector("img");
 						img.setAttribute("src", "resources/bootstrap-clipboard-check.svg");
-						document.setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
+						setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
 					}
 				},
 				computed: {
