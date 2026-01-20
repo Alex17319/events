@@ -22,6 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+:root {
+  --grid-maxWidth: 120rem;
+  --grid-gutter: 2rem;
+}
+
 .container {
   max-width: var(--grid-maxWidth);
   margin: 0 auto;
