@@ -123,10 +123,10 @@
 				constructor(urlBase, urlHash) {
 					this.urlBase = urlBase;
 					this.urlHash = urlHash;
+					this.fullUrl = this.urlBase + '#' + this.urlHash;
+					this.charCount = this.fullUrl.length;
+					this.compatibleWithIG = this.charCount <= 245;
 				}
-				get fullUrl() { return this.urlBase + '#' + this.urlHash; }
-				get charCount() { return this.fullUrl.length; }
-				get compatibleWithIG() { return this.charCount <= 245; }
 			}
 			const urlDisplayComponent = {
 				props: {
