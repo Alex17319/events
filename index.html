@@ -75,6 +75,9 @@
 						<img src="resources/bootstrap-clipboard.svg"></img>
 					</button>
 				</div>
+				<div class="url-stats">
+					<div><span v-text="eventUrl.charCount"></span> chars</div>
+				</div>
 				<div class="url-preview">
 					<div v-text="urlBase"></div>
 					<img src="resources/bootstrap-hash.svg"></img>
@@ -99,6 +102,15 @@
 		<script src="dependencies/compress.js"></script>
 		<script src="scripts/index.js"></script>
 		<script>
+			class EventUrlInfo {
+				constructor(urlBase, urlHash) {
+					this.urlBase = urlBase;
+					this.urlHash = urlHash;
+				}
+				get fullUrl() { return this.urlBase + '#' + this.urlHash; }
+				get charCount() { return this.fullUrl.length; }
+				get compatibleWithInstagramStory() { return this.charCount <= 245; }
+			}
 			const app = Vue.createApp({
 				data() {
 					return {
@@ -163,10 +175,13 @@
 							this.imageUrl + "`" +
 							this.description;
 					},
-					eventStringEncoded() { return this.encode(this.eventString); }
+					eventStringEncoded() { return this.encode(this.eventString); },
+					eventUrl() { return new EventUrlInfo(this.urlBase, this.eventString) },
+					eventUrlEncoded() { return new EventUrlInfo(this.urlBase, this.eventStringEncoded) },
 				},
 				asyncComputed: {
-					async eventStringCompressedEncoded() { return await this.compressAndEncode(this.eventString); }
+					async eventStringCompressedEncoded() { return await this.compressAndEncode(this.eventString); },
+					async eventUrlCompressedEncoded() { return new EventUrlInfo(this.urlBase, this.eventStringCompressedEncoded) },
 				}
 			});
 			app.use(AsyncComputed)
