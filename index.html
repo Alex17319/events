@@ -32,7 +32,7 @@
 				},
 				methods: {
 					encode(str) {
-						return unibinary.encodeString(str));
+						return unibinary.encodeString(str);
 					},
 					async compressAndEncode(str) {
 						return await unibinary.encode(await compress(str));
