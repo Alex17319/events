@@ -78,7 +78,7 @@
 					<div v-text="url.urlBase"></div>
 					<icon-hash class="hash-icon"></icon-hash>
 					<code v-text="url.urlHash"></code>
-					<button class="copy-button" @click="copyUrlToClipboard(url, $event)">
+					<button class="copy-button" @click="copyUrlToClipboard()">
 						<icon-clipboard v-if="!url.copied"></icon-clipboard>
 						<icon-clipboard-check v-else class="copied"></icon-clipboard-check>
 					</button>
@@ -121,7 +121,6 @@
 					this.fullUrl = this.urlBase + '#' + this.urlHash;
 					this.charCount = this.fullUrl.length;
 					this.compatibleWithIG = this.charCount <= 245;
-					this.copied = false;
 				}
 			}
 			
@@ -135,11 +134,16 @@
 				props: {
 					url: EventUrlInfo
 				},
+				data() {
+					return {
+						copied: false
+					}
+				},
 				methods: {
-					copyUrlToClipboard(urlInfo, e) {
-						navigator.clipboard.writeText(urlInfo.fullUrl);
-						urlInfo.copied = true;
-						setTimeout(() => { urlInfo.copied = false; }, 2000);
+					copyUrlToClipboard() {
+						navigator.clipboard.writeText(this.url.fullUrl);
+						this.copied = true;
+						setTimeout(() => { this.copied = false; }, 2000);
 					}
 				}
 			};
