@@ -79,8 +79,8 @@
 					<icon-hash class="hash-icon"></icon-hash>
 					<code v-text="url.urlHash"></code>
 					<button class="copy-button" @click="copyUrlToClipboard()">
-						<icon-clipboard v-if="!url.copied"></icon-clipboard>
-						<icon-clipboard-check v-else class="copied"></icon-clipboard-check>
+						<icon-clipboard-check v-if="copied" class="copied"></icon-clipboard-check>
+						<icon-clipboard v-else></icon-clipboard>
 					</button>
 				</div>
 				<div class="url-stats">
