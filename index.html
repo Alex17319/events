@@ -94,8 +94,24 @@
 						<img src="resources/bootstrap-clipboard.svg"></img>
 					</button>
 				</div>
+				<url-display url="eventUrl"></url-display>
 			</main>
 		</div>
+		<template id="url-display">
+			<div>
+				<div class="url-preview">
+					<div v-text="urlBase"></div>
+					<img src="resources/bootstrap-hash.svg"></img>
+					<code v-text="eventStringCompressedEncoded"></code>
+					<button @click="copyToClipboard(url.fullUrl, $event)">
+						<img src="resources/bootstrap-clipboard.svg"></img>
+					</button>
+				</div>
+				<div class="url-stats">
+					<div><span v-text="url.charCount"></span> chars</div>
+				</div>
+			</div>
+		</template>
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 		<script src="https://unpkg.com/vue-async-computed@4.0.1"></script>
 		<script src="dependencies/UniBinary.js"></script>
@@ -111,7 +127,16 @@
 				get charCount() { return this.fullUrl.length; }
 				get compatibleWithInstagramStory() { return this.charCount <= 245; }
 			}
+			const urlDisplayComponent = {
+				props: {
+					url: EventUrlInfo
+				},
+				template: "#url-display"
+			};
 			const app = Vue.createApp({
+				components: {
+					urlDisplayComponent
+				},
 				data() {
 					return {
 						title: "",
@@ -184,7 +209,7 @@
 					async eventUrlCompressedEncoded() { return new EventUrlInfo(this.urlBase, this.eventStringCompressedEncoded) },
 				}
 			});
-			app.use(AsyncComputed)
+			app.use(AsyncComputed);
 			app.mount('#app');
 		</script>
 	</body>
