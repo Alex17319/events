@@ -73,10 +73,12 @@
 		</div>
 		<template id="url-display">
 			<div>
-				<div class="url-preview">
-					<div class="url-base" v-text="url.urlBase"></div>
-					<icon-hash class="hash-icon"></icon-hash>
-					<code v-text="url.urlHash"></code>
+				<div class="url-preview-row">
+					<div class="url-preview">
+						<div class="url-base" v-text="url.urlBase"></div>
+						<icon-hash class="hash-icon"></icon-hash>
+						<code v-text="url.urlHash"></code>
+					</div>
 					<button class="copy-button" @click="copyUrlToClipboard()">
 						<icon-clipboard-check v-if="copied" class="copied"></icon-clipboard-check>
 						<icon-clipboard v-else></icon-clipboard>
