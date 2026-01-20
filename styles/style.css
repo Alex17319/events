@@ -17,10 +17,15 @@ input {
     flex-wrap: nowrap;
 }
 .url-preview {
-	flex-wrap: wrap;
 	flex-grow: 1;
 	padding: 1rem;
 	background-color: #f1f1f1;
+}
+@media screen and (max-width: 599px) {
+	.url-preview { flex-wrap: wrap; }
+}
+@media not screen and (max-width: 599px) {
+	.url-preview { flex-wrap: nowrap; }
 }
 .url-preview .url-base {
 	text-transform: uppercase;
@@ -37,6 +42,7 @@ input {
 .url-preview code {
 	word-break: break-all;
 	flex-grow: 1;
+	padding: 0;
 }
 .url-preview-row .copy-button {
 	background-color: transparent;
