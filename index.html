@@ -191,11 +191,11 @@
 							return 'invalid link';
 						}
 					},
-					formatDate(date) {
-						return date?.toISOString()?.match(/\d\d\d\d-\d\d-\d\d/)[0]?.replace(/-/g, '');
+					formatDate(datetime) {
+						return datetime?.match(/\d\d\d\d-\d\d-\d\d/)[0]?.replace(/-/g, '');
 					},
-					formatDateTime(date) {
-						return date?.toISOString()?.match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/)[0]?.replace(/\D/g, '');
+					formatDateTime(datetime) {
+						return datetime?.match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/)[0]?.replace(/\D/g, '');
 					},
 					randomInt(min, max) { // returns a number inclusive of min and max
 						return Math.floor(Math.random() * (max + 1 - min) + min);
