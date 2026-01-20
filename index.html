@@ -76,7 +76,7 @@
 		<template id="url-display">
 			<div>
 				<div class="url-preview">
-					<div v-text="url.urlBase"></div>
+					<div class="url-base" v-text="url.urlBase"></div>
 					<icon-hash class="hash-icon"></icon-hash>
 					<code v-text="url.urlHash"></code>
 					<button class="copy-button" @click="copyUrlToClipboard()">
