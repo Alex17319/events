@@ -220,7 +220,7 @@
 					async eventUrlCompressedEncoded() { return new EventUrlInfo(this.urlBase, await this.eventStringCompressedEncoded) },
 					async eventUrlSmallestEncoded() {
 						const a = this.eventStringEncoded;
-						const b = await this.eventUrlCompressedEncoded;
+						const b = await this.eventStringCompressedEncoded;
 						const smallest = a.length <= b.length ? a : b;
 						return new EventUrlInfo(this.urlBase, smallest);
 					},
