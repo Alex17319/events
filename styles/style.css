@@ -18,6 +18,7 @@ input {
 }
 .url-preview {
 	flex-wrap: wrap;
+	flex-grow: 1;
 	background-color: #f1f1f1;
 }
 .url-preview .url-base {
