@@ -14,7 +14,7 @@ input {
 	align-items: center;
 	gap: 1rem;
 }
-.url-preview img {
+.url-preview .hash-icon {
     padding: 0;
 	margin: 0;
 	height: 2rem;
@@ -23,14 +23,17 @@ input {
 	word-break: break-all;
 	flex-grow: 1;
 }
-.url-preview button {
+.url-preview .copy-button {
 	background-color: transparent;
 	border: none;
 	padding: 0;
-	min-width: 2rem;
+	min-width: 2.5rem;
 }
-.url-preview button img {
-	height: 2rem;
+.url-preview .copy-button img {
+	height: 2.5rem;
+}
+.url-preview .copy-button img.copied {
+	height: 2.5rem;
 }
 
 .url-stats {
@@ -41,4 +44,5 @@ input {
 	align-items: center;
 	gap: 0.5rem;
 	font-size: 0.8em;
+	margin-bottom: 0.5em;
 }
