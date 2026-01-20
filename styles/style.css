@@ -12,7 +12,11 @@ input {
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 1em;
+	gap: 1rem;
+}
+.url-preview img {
+    padding: 0;
+	margin: 0;
 }
 .url-preview-base {
 
