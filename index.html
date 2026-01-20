@@ -125,6 +125,22 @@
 					this.compatibleWithIG = this.charCount <= 245;
 				}
 			}
+
+			class Event {
+				constructor(title, location, startDatetime, endDatetime, timezone, rsvp, rsvpDate, imageUrl, theme, rng, description) {
+					this.title = title;
+					this.location = location;
+					this.startDatetime = startDatetime;
+					this.endDatetime = endDatetime;
+					this.timezone = timezone;
+					this.rsvp = rsvp;
+					this.rsvpDate = rsvpDate;
+					this.imageUrl = imageUrl;
+					this.theme = theme;
+					this.rng = rng;
+					this.description = description;
+				}
+			}
 			
 			const urlDisplayComponent = {
 				template: "#url-display",
@@ -155,19 +171,27 @@
 					UrlDisplay: urlDisplayComponent,
 				},
 				data() {
+					const urlBase = this.getUrlBase();
+					const urlHash = window.location.hash;
+
+					if (urlHash?.match(/^#.+/)) {
+						
+					}
+					
 					return {
 						title: "",
 						location: "",
 						startDatetime: "",
 						endDatetime: "",
+						timezone: "",
 						rsvp: "",
 						rsvpDate: "",
 						theme: "",
 						rng: this.randomInt(0,999),
 						imageUrl: "",
 						description: "",
-						urlBase: this.getUrlBase(),
-						urlHash: window.location.hash
+						urlBase: urlBase,
+						urlHash: urlHash
 					};
 				},
 				methods: {
@@ -195,28 +219,41 @@
 						const match = datetime?.match(/\d\d\d\d-\d\d-\d\d/);
 						return match && match[0]?.replace(/-/g, '') || '';
 					},
-					formatDateTime(datetime) {
+					formatDatetime(datetime) {
 						const match = datetime?.match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/);
 						return match && match[0]?.replace(/\D/g, '') || '';
+					},
+					parseDate(datestr) {
+						if (!datestr) return null;
+						if (!/^(\d\d\d\d\d\d\d\d)(\d\d\d\d)?\w*$/.test(datestr)) return null;
+						const matches = datestr.match(/^((?<yyyy>\d\d\d\d)(?<MM>\d\d)(?<dd>\d\d))((?<hh>\d\d)(?<mm>\d\d))?(<t>\w*)$/);
+						return null;
 					},
 					randomInt(min, max) { // returns a number inclusive of min and max
 						return Math.floor(Math.random() * (max + 1 - min) + min);
 					},
 					getUrlBase() {
 						return (window.location.host + window.location.pathname).replace(/[\/\\]+$/,'');
+					},
+					parseEventString(str) {
+						if (!str) return null;
+						const arr = str.split("`");
+						return {
+							title: /^[^`]+$/.test(arr[0]) ? arr[0] : "",
+							location: /^[^`]+$/.test(arr[1]) ? arr[1] : "",
+							startDatetime: /^(\d\d\d\d\d\d\d\d)(\d\d\d\d)?\w*$/.test(arr[2]) ? arr[2] : ""
+						}
 					}
 				},
 				computed: {
 					eventString() {
 						return this.title + "`" +
 							this.location + "`" +
-							this.formatDateTime(this.startDatetime) + "`" +
-							this.formatDateTime(this.endDatetime) + "`" +
+							this.formatDatetime(this.startDatetime) + "`" +
+							this.formatDatetime(this.endDatetime) + "`" +
 							this.rsvp + "`" +
 							this.formatDate(this.rsvpDate) + "`" +
-							this.theme + "`" +
-							(this.theme ? this.rng : "") + "`" +
-							this.imageUrl + "`" +
+							(this.imageUrl || (this.theme + (this.theme ? this.rng : ""))) + "`" +
 							this.description;
 					},
 					eventStringEncoded() { return this.encode(this.eventString); },
