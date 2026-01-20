@@ -14,10 +14,8 @@ input {
 	align-items: center;
 	gap: 1rem;
 }
-.url-preview .hash-icon {
-    padding: 0;
-	margin: 0;
-	height: 2rem;
+.url-preview svg.hash-icon {
+    height: 2rem;
 }
 .url-preview code {
 	word-break: break-all;
@@ -29,13 +27,10 @@ input {
 	padding: 0;
 	min-width: 2.5rem;
 }
-.url-preview .copy-button img {
-	padding: 0;
-	margin: 0;
+.url-preview .copy-button svg {
 	height: 2.5rem;
 }
-.url-preview .copy-button .copied {
-	height: 2.5rem;
+.url-preview .copy-button svg.copied {
 	color: #A07CB6;
 }
 
