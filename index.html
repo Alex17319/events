@@ -145,7 +145,7 @@
 					},
 					copyToClipboard(str, e) {
 						navigator.clipboard.writeText(str);
-						const img = e.target.querySelector("img");
+						const img = e.target.tagName === "img" ? e.target : e.target.querySelector("img");
 						img.setAttribute("src", "resources/bootstrap-clipboard-check.svg");
 						setTimeout(() => img.setAttribute("src", "resources/bootstrap-clipboard.svg"), 2000);
 					}
