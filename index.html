@@ -67,9 +67,18 @@
 						</div>
 					</div>
 				</form>
-				<p v-text="eventString">Sample text</p>
-				<p v-text="eventStringEncoded">Sample text</p>
-				<p v-text="eventStringCompressedEncoded">Sample text</p>
+				<div class="url-preview">
+					<div v-text="urlBase"><div>
+					<div v-text="eventString"></div>
+				</div>
+				<div class="url-preview">
+					<div v-text="urlBase"><div>
+					<div v-text="eventStringEncoded"></div>
+				</div>
+				<div class="url-preview">
+					<div v-text="urlBase"><div>
+					<div v-text="eventStringCompressedEncoded"></div>
+				</div>
 			</main>
 		</div>
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -90,7 +99,9 @@
 						theme: "",
 						rng: this.randomInt(0,999),
 						imageUrl: "",
-						description: ""
+						description: "",
+						urlBase: window.location.host + window.location.pathname,
+						urlHash: window.location.hash
 					};
 				},
 				methods: {
