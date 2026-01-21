@@ -67,7 +67,7 @@
 					</div>
 				</div>
 				<div>
-					<add-to-calendar-button
+					<!--<add-to-calendar-button
 						:name="event.title"
 						:startDate="event.startDate"
 						:startTime="event.startTime"
@@ -91,16 +91,20 @@
 						endTime="23:30"
 						timeZone="EST"
 					></add-to-calendar-button>
-					<div>asdfasdf</div>
+					<div>asdfasdf</div>-->
 					<add-to-calendar-button
 						:name="event.title || 'Event'"
-						options="'Apple','Google'"
 						:location="event.location || 'Location TBC'"
 						:startDate="event.startDate || '2026-03-03'"
 						:endDate="event.endDate || '2026-03-03'"
 						:startTime="event.startTime || '13:00'"
 						:endTime="event.endTime || '17:00'"
 						timeZone="EST"
+						options="'Apple','Google','iCal','Outlook.com','Yahoo'"
+						buttonsList
+						hideTextLabelButton
+						buttonStyle="round"
+						lightMode="bodyScheme"
 					></add-to-calendar-button>
 				</div>
 				<h1>Edit</h1>
