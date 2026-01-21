@@ -176,7 +176,9 @@
 
 					if (/^#.+/.test(urlHash)) {
 						let eventString = urlHash.substring(1); // remove the #
-						let evt = this.parseEventString(eventString) || this.parseEventString(this.decode(eventString));
+						console.log(this.parseEventString(eventString));
+						console.log(this.parseEventString(this.decode(eventString)));
+						this.decodeAndDecompress(eventString).then(x => console.log(this.parseEventString(x)));
 					}
 					
 					return {
