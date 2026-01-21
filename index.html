@@ -491,6 +491,9 @@
 					if (this.urlHash) {
 						this.loadEventFromUrlHash(this.urlHash); // don't wait for async method to return (even if we tried to wait, Vue would continue anyway)
 					}
+				},
+				compilerOptions: {
+					isCustomElement: (tag) => tag.startsWith('add-')
 				}
 			});
 			app.use(AsyncComputed);
