@@ -298,10 +298,11 @@
 						console.log(e2)
 						if (e2) { this.event = e2; return; }
 
+						let thisVue = this;
 						this.decodeAndDecompress(this.urlHash).then(function(decoded) {
-							const e3 = this.parseEventString(decoded);
+							const e3 = thisVue.parseEventString(decoded);
 							console.log(e3);
-							if (e3) this.event = e3;
+							if (e3) thisVue.event = e3;
 						});
 					}
 				}
