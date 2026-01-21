@@ -251,11 +251,10 @@
 					parseEventString(str) {
 						if (!str) return null;
 						const arr = str.split("`");
-						if (arr.length !== 8) return null;
 
-						const themeMatch = arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
+						const themeMatch = arr[7] && arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
 						const theme = themeMatch && themeMatch.groups.theme;
-						const rng = themeMatch && themeMatch.groups.theme || this.randomInt(0,999);
+						const rng = (themeMatch && themeMatch.groups.rng) || this.randomInt(0,999);
 						
 						return {
 							title: arr[0] || "",
