@@ -1,5 +1,6 @@
 textarea { 
-	resize: vertical; 
+	resize: vertical;
+	height: 10em;
 }
 
 input {
