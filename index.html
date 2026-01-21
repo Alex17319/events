@@ -20,8 +20,8 @@
 							<h1 v-text="event.title"></h1>
 						</div>
 						<div class="when-and-where">
-							<div v-text="event.location"></div>
-							<div>&bull;</div>
+							<div v-if="event.location" v-text="event.location"></div>
+							<div v-if="event.location">&bull;</div>
 
 							<!-- single-day, non-all-day events -->
 							<div v-if="!event.multiDay && !event.allDay && event.endTime" v-text="event.startShortWeekday || event.endShortWeekday"></div>
@@ -60,8 +60,7 @@
 							<div v-if="event.timezone"><span v-text="event.timezone"></span></div>
 						</div>
 						<div class="rsvp">
-							<div class="col" v-text="event.rsvp"></div>
-							<div class="col" v-text="event.rsvpDate"></div>
+							<div class="col" v-text="event.rsvpString"></div>
 						</div>
 						<div class="description">
 							<div class="col" v-text="event.description"></div>
