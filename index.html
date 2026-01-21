@@ -19,10 +19,10 @@
 						<div class="title">
 							<h1 v-text="event.title"></h1>
 						</div>
-						<div class="when-and-where">
+						<div class="location">
 							<div v-if="event.location" v-text="event.location"></div>
-							<div v-if="event.location">&bull;</div>
-
+						</div>
+						<div class="date-and-time">
 							<!-- single-day, non-all-day events -->
 							<div v-if="!event.multiDay && !event.allDay && !event.endTime" v-text="event.startLongWeekday"></div>
 							<div v-if="!event.multiDay && !event.allDay">&bull;</div>
