@@ -385,19 +385,19 @@
 						if (arr[2] && !start) return null;
 						if (arr[3] && !end) return null;
 						
-						return {
-							title: this.unescapeEventStringPart(arr[0]) || "",
-							location: this.unescapeEventStringPart(arr[1]) || "",
-							startDatetime: start || "",
-							endDatetime: end || "",
-							timezone: this.unescapeEventStringPart(arr[4]) || "",
-							rsvp: this.unescapeEventStringPart(arr[5]) || "",
-							rsvpDate: this.parseDatetime(arr[6]) || "",
-							imageUrl: !theme ? this.unescapeEventStringPart(arr[7]) : "",
-							theme: theme || "",
-							rng: rng,
-							description: this.unescapeEventStringPart(arr[8]) || ""
-						}
+						return new Event(
+							this.unescapeEventStringPart(arr[0]) || "", // title
+							this.unescapeEventStringPart(arr[1]) || "", // location
+							start || "", // startDatetime
+							end || "", // endDatetime
+							this.unescapeEventStringPart(arr[4]) || "", // timezone
+							this.unescapeEventStringPart(arr[5]) || "", // rsvp
+							this.parseDatetime(arr[6]) || "", // rsvpDate
+							!theme ? this.unescapeEventStringPart(arr[7]) : "", // imageUrl
+							theme || "", // theme
+							rng, // rng
+							this.unescapeEventStringPart(arr[8]) || "" // description
+						)
 					},
 					async loadEventFromUrlHash(urlHash) {
 						for (const decompress of [false, true]) {
