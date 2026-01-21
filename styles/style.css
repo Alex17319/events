@@ -41,6 +41,9 @@ input {
 .event-square .description {
 	flex-grow: 1;
 }
+.event-square .description div {
+	white-space: pre-wrap;
+}
 
 .url-preview-row, .url-preview {
     display: flex;
