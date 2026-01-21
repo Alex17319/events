@@ -171,20 +171,10 @@
 					UrlDisplay: urlDisplayComponent,
 				},
 				data() {
-					const urlBase = this.getUrlBase();
-					const urlHash = window.location.hash;
-
-					if (/^#.+/.test(urlHash)) {
-						let eventString = urlHash.substring(1); // remove the #
-						console.log(this.parseEventString(eventString));
-						console.log(this.parseEventString(this.decode(eventString)));
-						this.decodeAndDecompress(eventString).then(x => console.log(this.parseEventString(x)));
-					}
-					
 					return {
 						event: new Event("", "", "", "", "", "", "", "", "", this.randomInt(0,999), ""),
-						urlBase: urlBase,
-						urlHash: urlHash
+						urlBase: this.getUrlBase(),
+						urlHash: window.location.hash.replace(/^#/, '')
 					};
 				},
 				methods: {
@@ -296,6 +286,23 @@
 						const smallest = a?.length <= b?.length ? a : b;
 						return new EventUrlInfo(this.urlBase, smallest);
 					},
+				},
+				beforeMount() {
+					if (this.urlHash) {
+						const e1 = this.parseEventString(this.urlHash));
+						console.log(e1);
+						if (e1) { this.event = e1; return; }
+
+						const e2 = this.parseEventString(this.decode(this.urlHash));
+						console.log(e2)
+						if (e2) { this.event = e2; return; }
+
+						this.decodeAndDecompress(this.urlHash).then(function(decoded) {
+							const e3 = this.parseEventString(decoded);
+							console.log(e3);
+							if (e3) this.event = e3;
+						});
+					}
 				}
 			});
 			app.use(AsyncComputed);
