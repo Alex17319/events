@@ -1,3 +1,7 @@
+body {
+	padding: 0;
+}
+
 textarea { 
 	resize: vertical; 
 }
@@ -7,18 +11,17 @@ input {
 }
 
 .event-display {
-	width: 100vw;
-	height: 100vw;
-	max-width: 100vh;
-	max-height: 100vw;
-	color: green;
+	width: calc(min(100vw, 100vh, 38em));
+	height: calc(min(100vw, 100vh, 38em));
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: green;
 }
 .event-square {
+	width: 90%;
 	aspect-ratio: 1;
-	color: red;
+	background-color: red;
 }
 
 .url-preview-row, .url-preview {
