@@ -246,7 +246,7 @@
 					parseEventString(str) {
 						if (!str) return null;
 						const arr = str.split("|");
-						if (arr.length > 3) return null; // require at least a title, location, and start time
+						if (arr.length < 3) return null; // require at least a title, location, and start time
 
 						const themeMatch = arr[7] && arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
 						const theme = themeMatch && themeMatch.groups.theme;
