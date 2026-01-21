@@ -25,29 +25,20 @@ input {
 	flex-direction: column;
 	flex-wrap: nowrap;
 }
-.event-square .title {
+.event-square .title, .event-square .location, .event-square .date-and-time, .event-square .rsvp, .event-square .description {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-.event-square .when-and-where {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: nowrap;
 	gap: 0.5em;
+	flex-wrap: nowrap;
+}
+.event-square .date-and-time {
+	
 }
 .event-square .rsvp {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: nowrap;
+	
 }
 .event-square .description {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: nowrap;
 	flex-grow: 1;
 }
 
