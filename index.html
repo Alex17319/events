@@ -83,7 +83,8 @@
 						></add-to-calendar-button>
 					</div>
 				</div>
-				<h1>Edit</h1>
+				<h1 v-if="urlHash">Edit</h1>
+				<h1 v-else>Create Event</h1>
 				<form>
 					<div class="row">
 						<div class="col-8">
