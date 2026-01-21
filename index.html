@@ -200,21 +200,15 @@
 						return unibinary.encodeString(str);
 					},
 					async compressAndEncode(str) {
-						return await unibinary.encode(await compress(str));
+						return unibinary.encode(await compress(str));
 					},
 					decode(str) {
-						try {
-							return unibinary.decodeString(str);
-						} catch {
-							return null;
-						}
+						try { return unibinary.decodeString(str); }
+						catch { return null; }
 					},
 					async decodeAndDecompress(str) {
-						try {
-							return await decompress(unibinary.decode(str));
-						} catch {
-							return null;
-						}
+						try { return await decompress(unibinary.decode(str)); }
+						catch { return null; }
 					},
 					formatDate(datetime) {
 						const match = datetime?.match(/\d\d\d\d-\d\d-\d\d/);
@@ -287,7 +281,7 @@
 					async eventUrlSmallestEncoded() {
 						const a = this.eventStringEncoded;
 						const b = await this.eventStringCompressedEncoded;
-						const smallest = a.length <= b.length ? a : b;
+						const smallest = a?.length <= b?.length ? a : b;
 						return new EventUrlInfo(this.urlBase, smallest);
 					},
 				}
