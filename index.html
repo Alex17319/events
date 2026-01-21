@@ -241,6 +241,7 @@
 					parseEventString(str) {
 						if (!str) return null;
 						const arr = str.split("|");
+						if (arr.length !== 8) return null;
 
 						const themeMatch = arr[7] && arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
 						const theme = themeMatch && themeMatch.groups.theme;
