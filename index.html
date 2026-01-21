@@ -196,7 +196,7 @@
 					this.multiYear = startDetails && endDetails && (startDetails.yyyy !== endDetails.yyyy);
 					this.rsvpMultiYear = (rsvpDetails && startDetails && rsvpDetails.yyyy !== startDetails.yyyy) || (rsvpDetails && endDetails && rsvpDetails.yyyy !== endDetails.yyyy);
 
-					this.lateNight = startDetails.yyyy === endDetails.yyyy && startDetails.MM === endDetails.MM && (+startDetails.dd + 1) === +endDetails.dd && +startDetails.hh > 12 && +endDetails.hh < 6;
+					this.lateNight = startDetials && endDetails && startDetails.yyyy === endDetails.yyyy && startDetails.MM === endDetails.MM && (+startDetails.dd + 1) === +endDetails.dd && +startDetails.hh > 12 && +endDetails.hh < 6;
 					this.multiDay = startDetails && endDetails && !lateNight && (startDetails.yyyy !== endDetails.yyyy || startDetails.MM !== endDetails.MM || startDetails.dd !== endDetails.dd);
 
 					this.startOnTheHour = startDetails?.mm === "00";
@@ -214,6 +214,8 @@
 
 					this.startWeekday = startDateObj && weekdayFormatter.format(startDateObj);
 					this.endWeekday = endDateObj && weekdayFormatter.format(endDateObj);
+					
+					this.lessThanAWeek = (endDateObj - startDateObj) < 1000 * 60 * 60 * 24 * 6;
 
 					this.startYearlessDate = startDateObj && yearlessDateFormatter.format(startDateObj);
 					this.startYearfulDate = startDateObj && yearfulDateFormatter.format(startDateObj);
