@@ -1,7 +1,3 @@
-body {
-	padding: 0;
-}
-
 textarea { 
 	resize: vertical; 
 }
@@ -11,12 +7,14 @@ input {
 }
 
 .event-display {
-	width: calc(min(100vw, 100vh, 38em));
-	height: calc(min(100vw, 100vh, 38em));
+	width: calc(min(100vw, 100vh, 38em) - (2 * 13px));
+	height: calc(min(100vw, 100vh, 38em) - (2 * 13px));
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 2rem;
+	margin-top: 2rem;
 }
 .event-square {
 	width: 80%;
