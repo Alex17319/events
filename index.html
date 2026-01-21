@@ -267,10 +267,10 @@
 					const whimsicalMinutelessTimeFormatter = new Intl.DateTimeFormat(undefined, { hour: "numeric", hour12: true, dayPeriod: "long" });
 					const whimsicalMinutefulTimeFormatter = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit", hour12: true, dayPeriod: "long" });
 					
-					this.shortStartTime     = startDateObj && this.startOnTheHour ?          minutelessTimeFormatter.format(startDateObj) :          minutefulTimeFormatter.format(startDateObj);
-					this.shortEndTime       = endDateObj   && this.endOnTheHour   ?          minutelessTimeFormatter.format(endDateObj)   :          minutefulTimeFormatter.format(endDateObj);
-					this.whimsicalStartTime = startDateObj && this.startOnTheHour ? whimsicalMinutelessTimeFormatter.format(startDateObj) : whimsicalMinutefulTimeFormatter.format(startDateObj);
-					this.whimsicalEndTime   = endDateObj   && this.endOnTheHour   ? whimsicalMinutelessTimeFormatter.format(endDateObj)   : whimsicalMinutefulTimeFormatter.format(endDateObj);
+					this.shortStartTime     = startDateObj && (this.startOnTheHour ?          minutelessTimeFormatter.format(startDateObj) :          minutefulTimeFormatter.format(startDateObj));
+					this.shortEndTime       = endDateObj   && (this.endOnTheHour   ?          minutelessTimeFormatter.format(endDateObj)   :          minutefulTimeFormatter.format(endDateObj));
+					this.whimsicalStartTime = startDateObj && (this.startOnTheHour ? whimsicalMinutelessTimeFormatter.format(startDateObj) : whimsicalMinutefulTimeFormatter.format(startDateObj));
+					this.whimsicalEndTime   = endDateObj   && (this.endOnTheHour   ? whimsicalMinutelessTimeFormatter.format(endDateObj)   : whimsicalMinutefulTimeFormatter.format(endDateObj));
 
 					this.rsvpString = (
 						((this.rsvp || this.rsvpDate) && "RSVP ")
