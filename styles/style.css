@@ -91,7 +91,7 @@ input {
 	width: 2rem;
 	color: #A57BB0;
 }
-.url-preview .hash-icon-text {
+.url-preview .hash-text {
 	grid-area: 1 / 2 / 1 / 2;
 	font-size: 1.5rem;
 	color: transparent;
