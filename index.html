@@ -23,9 +23,9 @@
 							<div v-text="event.location"></div>
 							<div>&bull;</div>
 							<div v-text="event.startDatetime"></div>
-							<div>&ndash;</div>
-							<div v-text="event.endDatetime"></div>
-							<div v-text="event.timezone"></div>
+							<div v-if="event.endDatetime">&ndash;</div>
+							<div v-if="event.endDatetime" v-text="event.endDatetime"></div>
+							<div v-if="event.timezone">(<span v-text="event.timezone"></span>)</div>
 						</div>
 						<div class="rsvp">
 							<div class="col" v-text="event.rsvp"></div>
@@ -166,6 +166,19 @@
 					this.theme = theme;
 					this.rng = rng;
 					this.description = description;
+
+					const startDetails = startDatetime?.match(/(?<yyyy>\d\d\d\d)-(?<MM>\d\d)-(?<dd>\d\d)T?(?<hh>\d\d)?:?(?<mm>\d\d)?/)?.groups;
+					const endDetails = endDatetime?.match(/(?<yyyy>\d\d\d\d)-(?<MM>\d\d)-(?<dd>\d\d)T?(?<hh>\d\d)?:?(?<mm>\d\d)?/)?.groups;
+					const rsvpDetails = rsvpDatetime?.match(/(?<yyyy>\d\d\d\d)-(?<MM>\d\d)-(?<dd>\d\d)T?(?<hh>\d\d)?:?(?<mm>\d\d)?/)?.groups;
+
+					const multiYear = startDetails?.yyyy !== endDetails?.yyyy;
+					const rsvpMultiYear = rsvp?.yyyy !== startDetails?.yyyy || rsvp?.yyyy !== endDetails?.yyyy;
+
+					this.year = startDetails.yyyy;
+					this.endYear = mulliYear ? endDetails?.yyyy : null;
+					this.rsvpYear = rsvpMultiYear ? rsvp?.yyyy : null;
+
+					const multiDay = startDetails?.yyyy !== endDetails?.yyyy || startDetails?.MM !== endDetails?.MM || startDetails?.dd !== endDetails?.dd;
 				}
 			}
 			
@@ -205,6 +218,10 @@
 					};
 				},
 				methods: {
+					// displayDatetime(datetime) {
+					// 	if (!datetime) return "";
+					// 	return datetime.replace(/(?<yyyy>\d\d\d\d)-(?<MM>\d\d)-(?<dd>\d\d)T?(?<hh>\d\d)?:?(?<mm>\d\d)?/, "$<>")
+					// },
 					encode(str) {
 						return unibinary.encodeString(str);
 					},
