@@ -16,22 +16,22 @@
 			<main>
 				<div v-if="urlHash" class="event-display">
 					<div class="event-square">
-						<div class="row">
-							<div class="col" v-text="event.title"></div>
+						<div class="title">
+							<h1 v-text="event.title"></h1>
 						</div>
-						<div class="row">
-							<div class="col" v-text="event.location"></div>
-							<div class="col">&bull;</div>
-							<div class="col" v-text="event.startDatetime"></div>
-							<div class="col"> &ndash; </div>
-							<div class="col" v-text="event.endDatetime"></div>
-							<div class="col" v-text="event.timezone"></div>
+						<div class="when-and-where">
+							<div v-text="event.location"></div>
+							<div>&bull;</div>
+							<div v-text="event.startDatetime"></div>
+							<div>&ndash;</div>
+							<div v-text="event.endDatetime"></div>
+							<div v-text="event.timezone"></div>
 						</div>
-						<div class="row">
+						<div class="rsvp">
 							<div class="col" v-text="event.rsvp"></div>
 							<div class="col" v-text="event.rsvpDate"></div>
 						</div>
-						<div class="row">
+						<div class="description">
 							<div class="col" v-text="event.description"></div>
 						</div>
 					</div>
