@@ -24,10 +24,10 @@
 						</div>
 						<div class="date-and-time">
 							<!-- single-day, non-all-day events -->
-							<div v-if="!event.multiDay && !event.allDay && !event.endTime" v-text="event.startLongWeekday"></div>
-							<div v-if="!event.multiDay && !event.allDay">&bull;</div>
-							<div v-if="!event.multiDay && !event.allDay && event.endTime" v-text="(event.startShortWeekday || event.endShortWeekday) + ' ' + event.startTime + ' \u2013 ' + event.endTime"></div>
+							<div v-if="!event.multiDay && !event.allDay && event.endTime" v-text="event.startTime + ' \u2013 ' + event.endTime"></div>
 							<div v-if="!event.multiDay && !event.allDay && !event.endTime" v-text="event.whimsicalStartTime"></div>
+							<div v-if="!event.multiDay && !event.allDay">&bull;</div>
+							<div v-if="!event.multiDay && !event.allDay" v-text="event.startLongWeekday || event.endLongWeekday"></div>
 							<div v-if="!event.multiDay && !event.allDay">&bull;</div>
 							<div v-if="!event.multiDay && !event.allDay" v-text="event.startYearfulDate || event.endYearfulDate"></div>
 
