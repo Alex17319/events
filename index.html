@@ -229,7 +229,7 @@
 					},
 					unescapeEventStringPart(str) {
 						if (!str) return "";
-						return decodeURIComponent(str.replace(/\+/g, " ").replace("~", "%"));
+						return decodeURIComponent(str.replace(/\+/g, " ").replace(/\~/g, "%"));
 						
 						/*
 						let newStr = "";
