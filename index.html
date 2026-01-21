@@ -210,6 +210,27 @@
 						const match = datetime?.match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/);
 						return match && match[0]?.replace(/\D/g, '') || '';
 					},
+					formatTheme(theme, rng) {
+						if (!theme) return null;
+						if (!rng) return null;
+						if (rng < 0 || rng > 999) return null;
+						if (!/^[a-zA-Z\-]+$/.test(theme)) return null;
+						return theme.toLowerCase() + rng;
+					},
+					escapeEventStringPart(str) {
+						if (!str) return "";
+						let newStr = "";
+						for (let char of str) {
+							if (char === "|") newStr += "%7C"; // escape pipes
+							else if (char === "+") newStr += "%2B"; // escape pluses
+							else if (char === " ") newStr += "+"; // replace spaces with pluses
+							else if (char === "`") newStr += "%60"; // escape backticks (needed for some reason, not sure why)
+							else if (/\~\!\@\$\^\&\*\(\)\_\+\-\=\[\]\{\}\\\;\:\'\"\,\<\.\>\/\?/.test(char)) newStr += char; // keep these symbols
+							else if (!/\p{Letter}|\p{Number}|\p{Mark}|\p{Symbol}|\p{Punctuation}/u.test(char)) newStr += char; // keep everything in unicode other than control/separator characters
+							else newStr += encodeURIComponent(char); // escape all other fancy symbols like newlines, tabs, em spaces, RTL control characters, etc
+						}
+						return newStr;
+					},
 					parseDatetime(datestr) {
 						if (!datestr) return null;
 						const match = datestr.match(/^((?<yyyy>\d\d\d\d)(?<MM>\d\d)(?<dd>\d\d))((?<hh>\d\d)(?<mm>\d\d))?$/);
@@ -253,15 +274,15 @@
 				},
 				computed: {
 					eventString() {
-						return this.event.title + "`" +
-							this.event.location + "`" +
-							this.formatDatetime(this.event.startDatetime) + "`" +
-							this.formatDatetime(this.event.endDatetime) + "`" +
-							this.event.timezone + "`" +
-							this.event.rsvp + "`" +
-							this.formatDate(this.event.rsvpDate) + "`" +
-							(this.event.imageUrl || (this.event.theme + (this.event.theme ? this.event.rng : ""))) + "`" +
-							this.event.description;
+						return this.event.title + "|" +
+							this.escapeEventStringPart(this.event.location) + "|" +
+							this.formatDatetime(this.event.startDatetime) + "|" +
+							this.formatDatetime(this.event.endDatetime) + "|" +
+							this.escapeEventStringPart(this.event.timezone) + "\" +
+							this.escapeEventStringPart(this.event.rsvp) + "|" +
+							this.formatDate(this.event.rsvpDate) + "|" +
+							(this.escapeEventStringPart(this.event.imageUrl) || this.formatTheme(this.event.theme, this.event.rng)) + "|" +
+							this.escapeEventStringPart(this.event.description);
 					},
 					eventStringEncoded() { return this.encode(this.eventString); },
 					eventUrl() { return new EventUrlInfo(this.urlBase, this.eventString) },
