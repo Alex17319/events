@@ -208,16 +208,21 @@
 						return theme.toLowerCase() + rng;
 					},
 					escapeEventStringPart(str) {
+						// Unfriendly characters are escaped in the same way as a URI except using '~' rather than '%'.
+						// E.g. a line feed becomes '~0A' rather than '%0A'
+						// This avoids conflicts with regular URI encoding/decoding, which might also happen when copying links around, depending on the browser
+						// Spaces are also replaced with pluses
+						
 						if (!str) return "";
 						let newStr = "";
 						for (let char of str) {
-							if (char === "|") newStr += "%7C"; // escape pipes
-							else if (char === "+") newStr += "%2B"; // escape pluses
+							if (char === "|") newStr += "~7C"; // escape pipes
+							else if (char === "+") newStr += "~2B"; // escape pluses
 							else if (char === " ") newStr += "+"; // replace spaces with pluses
-							else if (char === "`") newStr += "%60"; // escape backticks (needed for some reason, not sure why)
-							else if (/\~\!\@\$\^\&\*\(\)\_\+\-\=\[\]\{\}\\\;\:\'\"\,\<\.\>\/\?/.test(char)) newStr += char; // keep these symbols
+							else if (char === "`") newStr += "~60"; // escape backticks (needed for some reason, not sure why)
+							else if (/\!\@\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\\\;\:\'\"\,\<\.\>\/\?/.test(char)) newStr += char; // keep these symbols
 							else if (!/\p{Letter}|\p{Number}|\p{Mark}|\p{Symbol}|\p{Punctuation}/u.test(char)) newStr += char; // keep everything in unicode other than control/separator characters
-							else newStr += encodeURIComponent(char); // escape all other fancy symbols like newlines, tabs, em spaces, RTL control characters, etc
+							else newStr += encodeURIComponent(char).replace("%", "~"); // escape all other fancy symbols like newlines, tabs, em spaces, RTL control characters, etc
 						}
 						return newStr;
 					},
