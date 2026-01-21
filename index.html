@@ -24,23 +24,37 @@
 							<div>&bull;</div>
 
 							<!-- single-day, non-all-day events -->
-							<div v-if="!event.multiDay && !event.allDay && event.endTime" v-text="event.startTime + '\u2013' + event.endTime"></div>
+							<div v-if="!event.multiDay && !event.allDay && event.endTime" v-text="event.startShortWeekday || event.endShortWeekday"></div>
+							<div v-if="!event.multiDay && !event.allDay && !event.endTime" v-text="event.startLongWeekday"></div>
+							<div v-if="!event.multiDay && !event.allDay">&bull;</div>
+							<div v-if="!event.multiDay && !event.allDay && event.endTime" v-text="event.startTime + ' \u2013 ' + event.endTime"></div>
 							<div v-if="!event.multiDay && !event.allDay && !event.endTime" v-text="event.whimsicalStartTime"></div>
 							<div v-if="!event.multiDay && !event.allDay">&bull;</div>
-							<div v-if="!event.multiDay && !event.allDay" v-text="event.endYearfulDate || event.startYearfulDate"></div>
+							<div v-if="!event.multiDay && !event.allDay" v-text="event.startYearfulDate || event.endYearfulDate"></div>
 
 							<!-- single-day, all-day events -->
-							<div v-if="!event.multiDay && event.allDay" v-text="event.endYearfulDate || event.startYearfulDate"></div>
+							<div v-if="!event.multiDay && event.allDay" v-text="event.startLongWeekday"></div>
+							<div v-if="!event.multiDay && event.allDay">&bull;</div>
+							<div v-if="!event.multiDay && event.allDay" v-text="event.startYearfulDate || event.endYearfulDate"></div>
 							
 							<!-- multi-day, non-all-day events -->
-							<div v-if="event.multiDay && !event.allDay && !event.multiYear" v-text="event.startTime + ' ' + event.startYearlessDate"></div>
-							<div v-if="event.multiDay && !event.allDay && event.multiYear" v-text="event.startTime + ' ' + event.startYearfulDate"></div>
+							<div v-if="event.multiDay && !event.allDay && event.lessThanAWeek" v-text="event.startLongWeekday + '\u2013' + event.endLongWeekday"></div>
+							<div v-if="event.multiDay && !event.allDay && event.lessThanAWeek">&bull;</div>
+							<div v-if="event.multiDay && !event.allDay && event.lessThanAWeek && !event.multiYear" v-text="event.startTime + ' ' + event.startYearlessDate"></div>
+							<div v-if="event.multiDay && !event.allDay && event.lessThanAWeek && event.multiYear" v-text="event.startTime + ' ' + event.startYearfulDate"></div>
+							<div v-if="event.multiDay && !event.allDay && !event.lessThanAWeek && !event.multiYear" v-text="event.startTime + ' ' + event.startShortWeekday + ' ' + event.startYearlessDate"></div>
+							<div v-if="event.multiDay && !event.allDay && !event.lessThanAWeek && event.multiYear" v-text="event.startTime + ' ' + event.startShortWeekday + ' ' + event.startYearfulDate"></div>
 							<div v-if="event.multiDay && !event.allDay">&ndash;</div>
-							<div v-if="event.multiDay && !event.allDay" v-text="event.endTime + ' ' + event.endYearfulDate"></div>
+							<div v-if="event.multiDay && !event.allDay && event.lessThanAWeek" v-text="event.endTime + ' ' + event.endYearfulDate"></div>
+							<div v-if="event.multiDay && !event.allDay && !event.lessThanAWeek" v-text="event.endTime + ' ' + event.startYearfulDate + ' ' + event.endYearfulDate"></div>
 
 							<!-- multi-day, all-day events -->
-							<div v-if="event.multiDay && event.allDay && !event.multiYear" v-text="event.startYearlessDate + '\u2013' + event.endYearfulDate"></div>
-							<div v-if="event.multiDay && event.allDay && event.multiYear" v-text="event.startYearfulDate + '\u2013' + event.endYearfulDate"></div>
+							<div v-if="event.multiDay && event.allDay && event.lessThanAWeek" v-text="event.startLongWeekday + '\u2013' + event.endLongWeekday"></div>
+							<div v-if="event.multiDay && event.allDay && event.lessThanAWeek">&bull;</div>
+							<div v-if="event.multiDay && event.allDay && event.lessThanAWeek && !event.multiYear" v-text="event.startYearlessDate + ' \u2013 ' + event.endYearfulDate"></div>
+							<div v-if="event.multiDay && event.allDay && event.lessThanAWeek && event.multiYear" v-text="event.startYearfulDate + ' \u2013 ' + event.endYearfulDate"></div>
+							<div v-if="event.multiDay && event.allDay && !event.lessThanAWeek && !event.multiYear" v-text="event.startShortWeekday + ' ' + event.startYearlessDate + ' \u2013 ' + event.endShortWeekday + ' ' + event.endYearfulDate"></div>
+							<div v-if="event.multiDay && event.allDay && !event.lessThanAWeek && event.multiYear" v-text="event.startShortWeekday + ' ' + event.startYearfulDate + ' \u2013 ' + event.endShortWeekday + ' ' + event.endYearfulDate"></div>
 
 							<div v-if="event.timezone">&bull;</div>
 							<div v-if="event.timezone"><span v-text="event.timezone"></span></div>
@@ -197,7 +211,7 @@
 					this.rsvpMultiYear = (rsvpDetails && startDetails && rsvpDetails.yyyy !== startDetails.yyyy) || (rsvpDetails && endDetails && rsvpDetails.yyyy !== endDetails.yyyy);
 
 					this.lateNight = startDetails && endDetails && startDetails.yyyy === endDetails.yyyy && startDetails.MM === endDetails.MM && (+startDetails.dd + 1) === +endDetails.dd && +startDetails.hh > 12 && +endDetails.hh < 6;
-					this.multiDay = startDetails && endDetails && !lateNight && (startDetails.yyyy !== endDetails.yyyy || startDetails.MM !== endDetails.MM || startDetails.dd !== endDetails.dd);
+					this.multiDay = startDetails && endDetails && !this.lateNight && (startDetails.yyyy !== endDetails.yyyy || startDetails.MM !== endDetails.MM || startDetails.dd !== endDetails.dd);
 
 					this.startOnTheHour = startDetails?.mm === "00";
 					this.endOnTheHour = endDetails?.mm === "00";
@@ -208,12 +222,15 @@
 					this.endYear = this.multiYear ? endDetails?.yyyy : null;
 					this.rsvpYear = this.rsvpMultiYear ? rsvpDetails?.yyyy : null;
 
-					const weekdayFormatter = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+					const shortWeekdayFormatter = new Intl.DateTimeFormat(undefined, { weekday: "short" });
+					const longWeekdayFormatter = new Intl.DateTimeFormat(undefined, { weekday: "long" });
 					const yearlessDateFormatter = new Intl.DateTimeFormat(undefined, { day: "numeric", month: "numeric" });
 					const yearfulDateFormatter = new Intl.DateTimeFormat(undefined, { day: "numeric", month: "numeric", year: "numeric" });
 
-					this.startWeekday = startDateObj && weekdayFormatter.format(startDateObj);
-					this.endWeekday = endDateObj && weekdayFormatter.format(endDateObj);
+					this.startShortWeekday = startDateObj && shortWeekdayFormatter.format(startDateObj);
+					this.endShortWeekday = endDateObj && shortWeekdayFormatter.format(endDateObj);
+					this.startLongWeekday = startDateObj && longWeekdayFormatter.format(startDateObj);
+					this.endLongWeekday = endDateObj && longWeekdayFormatter.format(endDateObj);
 					
 					this.lessThanAWeek = (endDateObj - startDateObj) < 1000 * 60 * 60 * 24 * 6;
 
