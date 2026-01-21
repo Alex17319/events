@@ -65,23 +65,23 @@
 							<div v-text="event.description"></div>
 						</div>
 					</div>
-				</div>
-				<div>
-					<add-to-calendar-button
-						:name="event.title || 'Event'"
-						:location="event.location || 'Location TBC'"
-						:startDate="event.startDate || '2026-03-03'"
-						:endDate="event.startDate || '2026-03-03'"
-						:startTime="event.startTime || '13:00'"
-						:endTime="event.endTime || '17:00'"
-						timeZone="EST"
-						debug
-						options="'Apple','Google','iCal','Outlook.com','Yahoo'"
-						buttonsList
-						hideTextLabelButton
-						buttonStyle="round"
-						lightMode="bodyScheme"
-					></add-to-calendar-button>
+					<div class="event-links">
+						<add-to-calendar-button
+							:name="event.title || 'Event'"
+							:location="event.location || 'Location TBC'"
+							:startDate="event.startDate || '2026-03-03'"
+							:endDate="event.startDate || '2026-03-03'"
+							:startTime="event.startTime || '13:00'"
+							:endTime="event.endTime || '17:00'"
+							timeZone="EST"
+							debug
+							options="'Apple','Google','iCal','Outlook.com','Yahoo'"
+							buttonsList
+							hideTextLabelButton
+							buttonStyle="round"
+							lightMode="bodyScheme"
+						></add-to-calendar-button>
+					</div>
 				</div>
 				<h1>Edit</h1>
 				<form>
