@@ -260,6 +260,28 @@
 							rng: rng,
 							description: arr[8] || ""
 						}
+					},
+					async loadEventFromUrlHash(urlHash) {
+						for (const decompress of [false, true]) {
+							for (const unibinDecode of [false, true]) {
+								if (!unibinDecode && decompress) continue; // this combination never occurs in practice; skip this loop iteration
+								for (const uriDecode of [false, true]) {
+									let str = urlHash;
+									if (uriDecode) str = decodeURIComponent(str);
+									if (unibinDecode && !decompress) str = this.decode(str);
+									if (unibinDecode && decompress) str = await this.decodeAndDecompress(str);
+
+									const evt = this.parseEventString(str);
+									console.log(decompress + ", " + unibinDecode + ", " + uriDecode + ":");
+									console.log(evt);
+									
+									if (evt) {
+										this.event = evt;
+										return; // break out of all loops
+									}
+								}
+							}
+						}
 					}
 				},
 				computed: {
@@ -290,20 +312,7 @@
 				},
 				beforeMount() {
 					if (this.urlHash) {
-						const e1 = this.parseEventString(this.urlHash);
-						console.log(e1);
-						if (e1) { this.event = e1; return; }
-
-						const e2 = this.parseEventString(this.decode(this.urlHash));
-						console.log(e2)
-						if (e2) { this.event = e2; return; }
-
-						let thisVue = this;
-						this.decodeAndDecompress(this.urlHash).then(function(decoded) {
-							const e3 = thisVue.parseEventString(decoded);
-							console.log(e3);
-							if (e3) thisVue.event = e3;
-						});
+						this.loadEventFromUrlHash(this.urlHash); // don't wait for async method to return (even if we tried to wait, Vue would continue anyway)
 					}
 				}
 			});
