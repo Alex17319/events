@@ -205,8 +205,8 @@
 					this.allDay = startDetails?.hh === null && startDetails?.mm === null && endDetails?.hh === null && endDetails?.mm === null;
 
 					this.year = startDetails?.yyyy;
-					this.endYear = multiYear ? endDetails?.yyyy : null;
-					this.rsvpYear = rsvpMultiYear ? rsvpDetails?.yyyy : null;
+					this.endYear = this.multiYear ? endDetails?.yyyy : null;
+					this.rsvpYear = this.rsvpMultiYear ? rsvpDetails?.yyyy : null;
 
 					const weekdayFormatter = new Intl.DateTimeFormat(undefined, { weekday: "short" });
 					const yearlessDateFormatter = new Intl.DateTimeFormat(undefined, { day: "numeric", month: "numeric" });
