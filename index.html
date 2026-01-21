@@ -82,7 +82,7 @@
 					></add-to-calendar-button>
 					<div>asdfasdf</div>
 					<add-to-calendar-button
-						name="Title"
+						:name="event.title"
 						options="'Apple','Google'"
 						location="World Wide Web"
 						startDate="2026-01-24"
@@ -93,13 +93,13 @@
 					></add-to-calendar-button>
 					<div>asdfasdf</div>
 					<add-to-calendar-button
-						:name="event.title"
+						:name="event.title || 'Event'"
 						options="'Apple','Google'"
-						location="World Wide Web"
-						startDate="2026-01-24"
-						endDate="2026-01-24"
-						startTime="10:15"
-						endTime="23:30"
+						:location="event.location || 'Location TBC'"
+						:startDate="event.startDate || '2026-03-03'"
+						:endDate="event.endDate || '2026-03-03'"
+						:startTime="event.startTime || '13:00'"
+						:endTime="event.endTime || '17:00'"
 						timeZone="EST"
 					></add-to-calendar-button>
 				</div>
