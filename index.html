@@ -211,10 +211,10 @@
 						return match && match[0]?.replace(/\D/g, '') || '';
 					},
 					formatTheme(theme, rng) {
-						if (!theme) return null;
-						if (!rng) return null;
-						if (rng < 0 || rng > 999) return null;
-						if (!/^[a-zA-Z\-]+$/.test(theme)) return null;
+						if (!theme) return "";
+						if (!rng) return "";
+						if (rng < 0 || rng > 999) return "";
+						if (!/^[a-zA-Z\-]+$/.test(theme)) return "";
 						return theme.toLowerCase() + rng;
 					},
 					escapeEventStringPart(str) {
