@@ -26,7 +26,9 @@ input {
 	flex-wrap: nowrap;
 }
 .event-square .title {
-
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .event-square .when-and-where {
 	display: flex;
