@@ -6,6 +6,21 @@ input {
     width: 100%;
 }
 
+.event-display {
+	width: 100vw;
+	height: 100vw;
+	max-width: 100vh;
+	max-height: 100vw;
+	color: green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.event-square {
+	aspect-ratio: 1;
+	color: red;
+}
+
 .url-preview-row, .url-preview {
     display: flex;
 	flex-direction: row;
