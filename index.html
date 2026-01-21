@@ -216,7 +216,8 @@
 						if (!str) return "";
 						let newStr = "";
 						for (let char of str) {
-							if (char === "|") newStr += "~7C"; // escape pipes
+							if (char === "~") newStr += '~7E'; // escape tildes
+							else if (char === "|") newStr += "~7C"; // escape pipes
 							else if (char === "+") newStr += "~2B"; // escape pluses
 							else if (char === " ") newStr += "+"; // replace spaces with pluses
 							else if (char === "`") newStr += "~60"; // escape backticks (needed for some reason, not sure why)
@@ -225,6 +226,28 @@
 							else newStr += encodeURIComponent(char).replace("%", "~"); // escape all other fancy symbols like newlines, tabs, em spaces, RTL control characters, etc
 						}
 						return newStr;
+					},
+					unescapeEventStringPart(str) {
+						if (!str) return "";
+						return decodeURIComponent(str.replace(/\+/g, " ").replace("~", "%"));
+						
+						/*
+						let newStr = "";
+						for (let i = 0; i < str.length; ) {
+							if (str.charAt(i) === "+") { newStr += " "; i++; continue; }
+							
+							const chunk = str.substring(i, i + 3);
+							if (chunk === "~7E") { newStr += "~"; i += 3; continue; }
+							if (chunk === "~7C") { newStr += "|"; i += 3; continue; }
+							if (chunk === "~2B") { newStr += "+"; i += 3; continue; }
+							if (chunk === "~60") { newStr += "`"; i += 3; continue; }
+
+							for (let j = i + 3; j < str.length; ) {
+								let bigChunk = str.substring(i, j);
+								if (/^(\~[0-9a-fA-F][0-9a-fA-F])$/.test(bigChunk))
+								newStr += decodeURIComponent(chunk.replace("~", "%"))
+							}
+						} */
 					},
 					parseDatetime(datestr) {
 						if (!datestr) return null;
@@ -248,9 +271,9 @@
 						const arr = str.split("|");
 						if (arr.length < 3) return null; // require at least a title, location, and start time
 
-						const themeMatch = arr[7] && arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
-						const theme = themeMatch && themeMatch.groups.theme;
-						const rng = (themeMatch && themeMatch.groups.rng) || this.randomInt(0,999);
+						const themeMatch = arr[7] && arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9][0-9][0-9])$/);
+						const theme = themeMatch && themeMatch.groups.theme?.toLowerCase();
+						const rng = Number(themeMatch && themeMatch.groups.rng || this.randomInt(0,999));
 
 						// Reject this event string if there are malformed dates (it has probably been parsed wrong, i.e. we should have used unibinDecode)
 						// Don't reject if the dates are absent entirely
@@ -260,17 +283,17 @@
 						if (arr[3] && !end) return null;
 						
 						return {
-							title: arr[0] || "",
-							location: arr[1] || "",
+							title: this.unescapeEventStringPart(arr[0]) || "",
+							location: this.unescapeEventStringPart(arr[1]) || "",
 							startDatetime: start || "",
 							endDatetime: end || "",
-							timezone: arr[4] || "",
-							rsvp: arr[5] || "",
+							timezone: this.unescapeEventStringPart(arr[4]) || "",
+							rsvp: this.unescapeEventStringPart(arr[5]) || "",
 							rsvpDate: this.parseDatetime(arr[6]) || "",
-							imageUrl: !theme ? arr[7] : "",
+							imageUrl: !theme ? this.unescapeEventStringPart(arr[7]) : "",
 							theme: theme || "",
 							rng: rng,
-							description: arr[8] || ""
+							description: this.unescapeEventStringPart(arr[8]) || ""
 						}
 					},
 					async loadEventFromUrlHash(urlHash) {
