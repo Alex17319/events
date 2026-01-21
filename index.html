@@ -151,7 +151,10 @@
 				<div class="url-preview-row">
 					<div class="url-preview">
 						<div class="url-base" v-text="url?.urlBase"></div>
-						<icon-hash class="hash-icon"></icon-hash>
+						<div class="hash-icon-container">
+							<icon-hash class="hash-icon"></icon-hash>
+							<div class="hash-text">#</div>
+						</div>
 						<code v-text="url?.urlHash"></code>
 					</div>
 					<button class="copy-button" @click="copyUrlToClipboard()">
