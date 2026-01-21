@@ -246,17 +246,24 @@
 					parseEventString(str) {
 						if (!str) return null;
 						const arr = str.split("|");
-						if (arr.length !== 8) return null;
+						if (arr.length > 3) return null; // require at least a title, location, and start time
 
 						const themeMatch = arr[7] && arr[7].match(/^(?<theme>[a-zA-Z]+)(?<rng>[0-9]+)$/);
 						const theme = themeMatch && themeMatch.groups.theme;
 						const rng = (themeMatch && themeMatch.groups.rng) || this.randomInt(0,999);
+
+						// Reject this event string if there are malformed dates (it has probably been parsed wrong, i.e. we should have used unibinDecode)
+						// Don't reject if the dates are absent entirely
+						const start = this.parseDatetime(arr[2]);
+						const end = this.parseDatetime(arr[3]);
+						if (arr[2] && !start) return null;
+						if (arr[3] && !end) return null;
 						
 						return {
 							title: arr[0] || "",
 							location: arr[1] || "",
-							startDatetime: this.parseDatetime(arr[2]) || "",
-							endDatetime: this.parseDatetime(arr[3]) || "",
+							startDatetime: start || "",
+							endDatetime: end || "",
 							timezone: arr[4] || "",
 							rsvp: arr[5] || "",
 							rsvpDate: this.parseDatetime(arr[6]) || "",
