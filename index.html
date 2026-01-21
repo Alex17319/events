@@ -14,19 +14,41 @@
 	<body>
 		<div id="app">
 			<main>
-				<h1>Events</h1>
+				<div v-if="urlHash" class="event-display">
+					<div class="event-square">
+						<div class="row">
+							<div class="col" v-text="event.title"></div>
+						</div>
+						<div class="row">
+							<div class="col" v-text="event.location"></div>
+							<div class="col">&bul;</div>
+							<div class="col" v-text="event.startDatetime"></div>
+							<div class="col"> &endash; </div>
+							<div class="col" v-text="event.endDatetime"></div>
+							<div class="col" v-text="event.timezone"></div>
+						</div>
+						<div class="row">
+							<div class="col" v-text="event.rsvp"></div>
+							<div class="col" v-text="event.rsvpDate"></div>
+						</div>
+						<div class="row">
+							<div class="col" v-text="event.description"></div>
+						</div>
+					</div>
+				</div>
+				<h1>Edit</h1>
 				<form>
 					<div class="row">
-						<div class="col">
+						<div class="col-8">
 							<label for="title">Title</label>
 		  					<input type="text" id="title" name="title" v-model="event.title" placeholder="My Event">
 						</div>
-					</div>
-					<div class="row">
 						<div class="col">
 							<label for="location">Location</label>
 		  					<input type="text" id="location" name="location" v-model="event.location" placeholder="Location TBA">
 						</div>
+					</div>
+					<div class="row">
 						<div class="col">
 							<label for="start-datetime">Start</label>
 		  					<input type="datetime-local" id="start-datetime" name="start-datetime" v-model="event.startDatetime" placeholder="2026-01-01">
@@ -34,6 +56,10 @@
 						<div class="col">
 							<label for="end-datetime">End</label>
 		  					<input type="datetime-local" id="end-datetime" name="end-datetime" v-model="event.endDatetime" placeholder="2026-01-01">
+						</div>
+						<div class="col">
+							<label for="timezone">Timezone</label>
+	  						<input type="text" id="timezone" name="timezone" v-model="event.timezone" placeholder="ACDT">
 						</div>
 					</div>
 					<div class="row">
@@ -67,6 +93,7 @@
 						</div>
 					</div>
 				</form>
+				<h1>Links</h1>
 				<url-display :url="eventUrl"></url-display>
 				<url-display :url="eventUrlSmallestEncoded"></url-display>
 			</main>
