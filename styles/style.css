@@ -16,12 +16,37 @@ input {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: green;
 }
 .event-square {
-	width: 90%;
+	width: 80%;
 	aspect-ratio: 1;
-	background-color: red;
+	border: 3px solid #777777;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+.event-square .title {
+
+}
+.event-square .when-and-where {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 0.5em;
+}
+.event-square .rsvp {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+.event-square .description {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: nowrap;
+	flex-grow: 1;
 }
 
 .url-preview-row, .url-preview {
