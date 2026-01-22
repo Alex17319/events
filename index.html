@@ -481,7 +481,8 @@
 								if (!unibinDecode && decompress) continue; // this combination never occurs in practice; skip this loop iteration
 								for (const uriDecode of [false, true]) {
 									let str = urlHash;
-									if (uriDecode) str = decodeURIComponent(str);
+									try { if (uriDecode) str = decodeURIComponent(str); }
+									catch { continue; }
 									if (unibinDecode && !decompress) str = this.decode(str);
 									if (unibinDecode && decompress) str = await this.decodeAndDecompress(str);
 
