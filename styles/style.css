@@ -31,6 +31,7 @@ input {
 	justify-content: center;
 	align-items: center;
 	padding: 2rem;
+	container: my-container / inline-size;
 }
 .event-square .title, .event-square .location, .event-square .date-and-time, .event-square .rsvp, .event-square .description {
 	display: flex;
