@@ -68,7 +68,7 @@
 					<div class="event-square" v-if="urlHashLoadFailed" v-cloak>
 						Error displaying event
 					</div>
-					<div class="event-links" v-if="urlHashLoaded" v-cloak>
+					<div class="calendar-buttons" v-if="urlHashLoaded" v-cloak>
 						<add-to-calendar-button
 							:name="event.title || 'Event'"
 							:location="event.location || 'Location TBC'"
