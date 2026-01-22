@@ -167,6 +167,7 @@
 					<div><span v-text="url?.charCount"></span> chars</div>
 					<div>&bull;</div>
 					<div>Instagram: <span v-if="url?.compatibleWithIG">Yea</span><span v-else>Nay</span></div>
+					<div>Ascii: <span v-if="url?.ascii">Yea</span><span v-else>Nay</span></div>
 				</div>
 			</div>
 		</template>
@@ -202,6 +203,7 @@
 					this.fullUrl = this.urlBase + '#' + this.urlHash;
 					this.charCount = this.fullUrl.length;
 					this.compatibleWithIG = this.charCount <= 245;
+					this.ascii = /^[\x20-\x7E]*$/.test(this.urlHash);
 				}
 			}
 
