@@ -142,8 +142,8 @@ input {
 	font-weight: bold;
 }
 
-.faq p {
-	margin-top: 3rem;
+.faq {
+	margin-top: 10rem;
 }
 .faq p {
 	font-size: 1.5rem;
