@@ -306,11 +306,10 @@
 						setTimeout(() => { this.copied = false; }, 2000);
 					},
 					removeNewlinesFromManualCopy() {
-						try {
-							navigator.clipboard.readText()
-								.then(x => x?.replace(/\r|\n/g, ''))
-								.then(x => navigator.clipboard.writeText(x))
-						} catch { }
+						navigator.clipboard.readText()
+							.then(x => x?.replace(/\r|\n/g, ''))
+							.then(x => navigator.clipboard.writeText(x))
+							.catch(x => {});
 					}
 				}
 			};
