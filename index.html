@@ -147,7 +147,7 @@
 			</main>
 		</div>
 		<template id="url-display">
-			<div>
+			<div @oncopy="removeNewlinesFromManualCopy">
 				<div class="url-preview-row">
 					<div class="url-preview">
 						<div class="url-base" v-text="url?.urlBase"></div>
@@ -304,6 +304,11 @@
 						navigator.clipboard.writeText(this.url.fullUrl);
 						this.copied = true;
 						setTimeout(() => { this.copied = false; }, 2000);
+					},
+					removeNewlinesFromManualCopy() {
+						navigator.clipboard.readText()
+							.then(x => x?.replace(/\r|\n/g, '')?.replace(/compatibility:/i, '\nCompatibility:'))
+							.then(x => navigator.clipboard.writeText(x))
 					}
 				}
 			};
