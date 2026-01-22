@@ -22,6 +22,7 @@ input {
 	margin-top: 2rem;
 }
 .event-square {
+	container-type: size;
 	width: 80%;
 	aspect-ratio: 1;
 	border: 3px solid #777777;
@@ -31,14 +32,14 @@ input {
 	justify-content: center;
 	align-items: center;
 	padding: 2rem;
-	container: my-container / inline-size;
 }
-.event-square .title, .event-square .location, .event-square .date-and-time, .event-square .rsvp, .event-square .description {
+.event-square > * {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 0.5em;
 	flex-wrap: nowrap;
+	font-size: 3cqw;
 }
 .event-square .title h1 {
 	margin-top: 1rem;
