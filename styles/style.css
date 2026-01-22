@@ -1,4 +1,5 @@
 body {
+	padding: 0.75em;
 	margin-bottom: 4em;
 }
 
@@ -16,8 +17,8 @@ input {
 }
 
 .event-display {
-	width: calc(min(100vw, 100vh, 38em) - (2 * 13px));
-	height: calc(min(100vw, 100vh, 38em) - (2 * 13px));
+	width: calc(min(100vmin, 38em - 1.5em));
+	height: calc(min(100vmin, 38em - 1.5em));
 	display: grid;
 	place-items: center;
 	gap: 2rem;
@@ -64,7 +65,7 @@ input {
 .calendar-buttons {
 	grid-row: 2 / 3;
 	grid-column: 1 / 2;
-	transform: scale(calc(100px / 6.5104cqw));
+	transform: scale(calc((38em - 1.5em) / 100cqw));
 }
 
 .links-list {
