@@ -141,5 +141,8 @@ input {
 }
 
 .faq p {
+	margin-top: 3rem;
+}
+.faq p {
 	font-size: 1.5rem;
 }
