@@ -142,8 +142,10 @@
 					</div>
 				</form>
 				<h1>Links</h1>
-				<url-display :url="eventUrl"></url-display>
-				<url-display :url="eventUrlSmallestEncoded"></url-display>
+				<div class="links-list">
+					<url-display :url="eventUrl"></url-display>
+					<url-display :url="eventUrlSmallestEncoded"></url-display>
+				</div>
 			</main>
 		</div>
 		<template id="url-display">
