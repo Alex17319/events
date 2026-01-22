@@ -28,6 +28,8 @@ input {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
 }
 .event-square .title, .event-square .location, .event-square .date-and-time, .event-square .rsvp, .event-square .description {
 	display: flex;
