@@ -15,7 +15,7 @@
 		<div id="app">
 			<main>
 				<div v-if="urlHash" class="event-display">
-					<div class="event-square" v-if="urlHashLoaded">
+					<div class="event-square" v-if="urlHashLoaded" v-cloak>
 						<div class="title">
 							<h1 v-text="event.title"></h1>
 						</div>
@@ -65,10 +65,10 @@
 							<div v-text="event.description"></div>
 						</div>
 					</div>
-					<div class="event-square" v-if="urlHashLoadFailed">
+					<div class="event-square" v-if="urlHashLoadFailed" v-cloak>
 						Error displaying event
 					</div>
-					<div class="event-links" v-if="urlHashLoaded">
+					<div class="event-links" v-if="urlHashLoaded" v-cloak>
 						<add-to-calendar-button
 							:name="event.title || 'Event'"
 							:location="event.location || 'Location TBC'"
