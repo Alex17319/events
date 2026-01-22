@@ -61,7 +61,7 @@ input {
 	white-space: pre-wrap;
 	text-align: center;
 }
-.calendar-buttons div {
+.calendar-buttons {
 	grid-row: 2 / 3;
 	grid-column: 1 / 2;
 	transform: scale(calc(100px / 6.5104cqw));
