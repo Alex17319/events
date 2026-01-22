@@ -139,3 +139,7 @@ input {
 	font-size: 0.8em;
 	font-weight: bold;
 }
+
+.faq p {
+	font-size: 1.5rem;
+}
