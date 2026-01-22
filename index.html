@@ -15,7 +15,7 @@
 		<div id="app">
 			<main>
 				<div v-if="urlHash" class="event-display">
-					<div class="event-square">
+					<div class="event-square" v-if="urlHashLoaded">
 						<div class="title">
 							<h1 v-text="event.title"></h1>
 						</div>
@@ -65,7 +65,10 @@
 							<div v-text="event.description"></div>
 						</div>
 					</div>
-					<div class="event-links">
+					<div class="event-square" v-if="urlHashLoadFailed">
+						Error displaying event
+					</div>
+					<div class="event-links" v-if="urlHashLoaded">
 						<add-to-calendar-button
 							:name="event.title || 'Event'"
 							:location="event.location || 'Location TBC'"
@@ -344,7 +347,9 @@
 					return {
 						event: new Event("", "", "", "", "", "", "", "", "", this.randomInt(0,999), ""),
 						urlBase: this.getUrlBase(),
-						urlHash: window.location.hash.replace(/^#/, '')
+						urlHash: window.location.hash.replace(/^#/, ''),
+						urlHashLoaded: false,
+						urlHashLoadFailed: false
 					};
 				},
 				methods: {
@@ -486,11 +491,13 @@
 									
 									if (evt) {
 										this.event = evt;
+										this.urlHashLoaded = true;
 										return; // break out of all loops
 									}
 								}
 							}
 						}
+						this.urlHashLoadFailed = true;
 					}
 				},
 				computed: {
