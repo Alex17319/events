@@ -35,18 +35,18 @@ input {
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
-	padding: 2rem;
+	padding: 3%;
 }
 .event-square > * {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 0.5em;
+	gap: 1cqw;
 	flex-wrap: nowrap;
 	font-size: 3cqw;
 }
 .event-square .title h1 {
-	margin-top: 1rem;
+	margin: 2cqh 0 3cqh 0;
 }
 .event-square .date-and-time {
 	
