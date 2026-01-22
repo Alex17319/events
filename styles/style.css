@@ -11,6 +11,10 @@ input {
     width: 100%;
 }
 
+[v-cloak] {
+	display: none;
+}
+
 .event-display {
 	width: calc(min(100vw, 100vh, 38em) - (2 * 13px));
 	height: calc(min(100vw, 100vh, 38em) - (2 * 13px));
