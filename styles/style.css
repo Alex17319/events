@@ -24,6 +24,7 @@ input {
 	place-items: center;
 	gap: 2rem;
 	margin-top: 2rem;
+	position: relative; /* needed for positioning calendar buttons */
 }
 .event-square {
 	container-type: size;
@@ -64,8 +65,7 @@ input {
 	text-align: center;
 }
 .calendar-buttons {
-	grid-row: 2 / 3;
-	grid-column: 1 / 2;
+	position: absolute;
 	transform: scale(calc(100cqw / (38em - 1.5em)));
 }
 
