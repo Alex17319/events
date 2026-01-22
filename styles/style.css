@@ -22,8 +22,7 @@ input {
 	height: calc(min(100vmin, 38em - 1.5em));
 	display: grid;
 	place-items: center;
-	gap: 2rem;
-	margin-top: 2rem;
+	margin-bottom: 6rem;
 	position: relative; /* needed for positioning calendar buttons */
 }
 .event-square {
@@ -66,6 +65,7 @@ input {
 }
 .calendar-buttons {
 	position: absolute;
+	bottom: -2cqw;
 	transform: scale(calc(100cqw / (38em - 1.5em)));
 }
 
