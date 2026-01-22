@@ -53,6 +53,12 @@ input {
 
 }
 
+.links-list {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
 .url-preview-row, .url-preview {
     display: flex;
 	flex-direction: row;
