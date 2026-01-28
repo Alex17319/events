@@ -19,7 +19,7 @@ input {
 .event-display {
 	container-type: size;
 	width: calc(min(100vmin, 38em - 1.5em));
-	height: calc(min(100vmin, 38em - 1.5em) * 0.8);
+	height: calc(min(100vmin, 38em - 1.5em) * 0.9);
 	display: grid;
 	justify-items: center;
 	align-items: end;
