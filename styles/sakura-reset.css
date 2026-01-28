@@ -32,10 +32,6 @@ html {
 }
 
 /* adjust other sizes throughout sakura.css to preserve the same look while using new 1rem definition */
-:root {
-	--grid-maxWidth: 75rem;
-	--grid-gutter: 1.25rem;
-}
 body {
 	font-size: var(--sakura18);
 }
