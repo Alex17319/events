@@ -83,7 +83,7 @@ input {
 	margin-block-end: 3.75rem;
 }
 .calendar-buttons {
-	transform: scale(calc(100cqw / 38em));
+	transform: scale(calc(100cqw / 33.777rem * 1.1));
 }
 
 .section-edit {
