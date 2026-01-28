@@ -79,11 +79,13 @@ input {
 	display: grid;
 	justify-items: center;
 	align-items: center;
+	justify-content: center;
 	height: calc(min(100cqw, 100svh, 38em) * 0.2);
 	margin-block-end: 3.75rem;
 }
 .calendar-buttons {
 	transform: scale(calc(100cqw / 33.777rem * 1.1));
+	min-width: max-content;
 }
 
 .section-edit {
