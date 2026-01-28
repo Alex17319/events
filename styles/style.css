@@ -16,7 +16,7 @@ input {
 	display: none !important;
 }
 
-.event-display {
+.section-event-display {
 	container-type: size;
 	width: calc(min(100vmin, 38em));
 	height: calc(min(100vmin, 38em) * 0.9);
@@ -64,7 +64,7 @@ input {
 	text-align: center;
 }
 
-.calendar-buttons-container {
+.section-calendar-buttons {
 	container-type: size;
 	display: grid;
 	justify-items: center;
@@ -163,9 +163,9 @@ input {
 	font-weight: bold;
 }
 
-.faq {
+.section-faq {
 	margin-top: 10rem;
 }
-.faq p {
+.section-faq p {
 	font-size: 0.8em;
 }
