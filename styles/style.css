@@ -22,10 +22,6 @@ input {
 }
 .event-display {
 	container-type: size;
-	/* fallbacks in case svh is not supported */
-	width: calc(min(100cqw, 100vh, 38em));
-	height: calc(min(100cqw, 100svh, 38em) * 0.9);
-	/* sizing when svh is supported */
 	width: calc(min(100cqw, 100svh, 38em));
 	height: calc(min(100cqw, 100svh, 38em) * 0.9);
 	margin-inline: auto;
@@ -72,12 +68,12 @@ input {
 	text-align: center;
 }
 
-.section-calendar-buttons {
+.calendar-buttons-display {
 	container-type: size;
 	display: grid;
 	justify-items: center;
 	align-items: center;
-	height: calc(min(100vmin, 38em) * 0.2);
+	height: calc(min(100cqw, 100svh, 38em) * 0.2);
 	margin-block-end: 6rem;
 }
 .calendar-buttons {
