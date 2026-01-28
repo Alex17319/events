@@ -18,7 +18,7 @@ input {
 
 .section-event-display {
 	width: auto;
-	container-type: size;
+	container-type: inline-size;
 }
 .event-display {
 	container-type: size;
