@@ -20,10 +20,10 @@ input {
 	container-type: size;
 	width: calc(min(100vmin, 38em));
 	height: calc(min(100vmin, 38em) * 0.9);
+	margin-inline: auto;
 	display: grid;
 	justify-items: center;
 	align-items: end;
-	position: relative; /* needed for positioning calendar buttons */
 }
 .event-square {
 	container-type: size;
