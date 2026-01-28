@@ -17,9 +17,17 @@ input {
 }
 
 .section-event-display {
+	width: auto;
 	container-type: size;
-	width: calc(min(100vmin, 38em));
-	height: calc(min(100vmin, 38em) * 0.9);
+}
+.event-display {
+	container-type: size;
+	/* fallbacks in case svh is not supported */
+	width: calc(min(100cqw, 100vh, 38em));
+	height: calc(min(100cqw, 100svh, 38em) * 0.9);
+	/* sizing when svh is supported */
+	width: calc(min(100cqw, 100svh, 38em));
+	height: calc(min(100cqw, 100svh, 38em) * 0.9);
 	margin-inline: auto;
 	display: grid;
 	justify-items: center;
