@@ -1,3 +1,8 @@
+:root {
+	--grid-maxWidth: 75rem;
+	--grid-gutter: 1.25rem;
+}
+
 body {
 	padding: 0;
 	margin-block-end: 4em;
