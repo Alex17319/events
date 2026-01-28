@@ -66,11 +66,12 @@ input {
 
 .calendar-buttons-container {
 	container-type: size;
+	display: grid;
+	justify-items: center;
+	align-items: center;
 	margin-bottom: 6rem;
 }
 .calendar-buttons {
-	position: absolute;
-	bottom: -2cqw;
 	transform: scale(calc(100cqw / (38em - 1.5em)));
 }
 
