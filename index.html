@@ -14,7 +14,7 @@
 	<body>
 		<div id="app">
 			<main>
-				<section v-if="urlHash" class="event-display">
+				<section v-if="urlHash" class="section-event-display">
 					<div class="event-square" v-if="urlHashLoaded" v-cloak>
 						<div class="title">
 							<h1 v-text="event.title"></h1>
@@ -69,7 +69,7 @@
 						Error displaying event
 					</div>
 				</section>
-				<section v-if="urlHash" class="calendar-buttons-container">
+				<section v-if="urlHash" class="section-calendar-buttons">
 					<div class="calendar-buttons" v-if="urlHashLoaded" v-cloak>
 						<add-to-calendar-button
 							:name="event.title || 'Event'"
@@ -88,7 +88,7 @@
 						></add-to-calendar-button>
 					</div>
 				</section>
-				<section>
+				<section class="section-edit">
 					<h1 v-if="urlHash">Edit</h1>
 					<h1 v-else>Create Event</h1>
 					<form>
@@ -153,7 +153,7 @@
 						<url-display :url="eventUrlSmallestEncoded"></url-display>
 					</div>
 				</section>
-				<section class="faq">
+				<section class="section-faq">
 					<h1>FAQ</h1>
 					<h6>What is this? How do I use it?</h6>
 					<p>
