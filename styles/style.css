@@ -9,12 +9,12 @@ label, legend, fieldset { margin-bottom: var(--sakura05); }
 ul, blockquote, img, video, pre { margin-bottom: var(--sakura25); }
 table { margin-bottom: var(--sakura20); }
 
-@media (max-width: 684px) {
+@media (max-width: 42.75rem) {
 	body {
 		font-size: var(--sakura153);
 	}
 }
-@media (max-width: 382px) {
+@media (max-width: 23.875rem) {
 	body {
 		font-size: var(--sakura135);
 	}
