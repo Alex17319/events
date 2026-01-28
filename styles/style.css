@@ -69,7 +69,7 @@ input {
 	display: grid;
 	justify-items: center;
 	align-items: center;
-	height: calc(min(100vmin, 38em) * 0.1);
+	height: calc(min(100vmin, 38em) * 0.2);
 	margin-block-end: 6rem;
 }
 .calendar-buttons {
