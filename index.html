@@ -70,24 +70,24 @@
 							Error displaying event
 						</div>
 					</div>
-				</section>
-				<section v-if="urlHash" class="section-calendar-buttons">
-					<div class="calendar-buttons" v-if="urlHashLoaded" v-cloak>
-						<add-to-calendar-button
-							:name="event.title || 'Event'"
-							:location="event.location || 'Location TBC'"
-							:startDate="event.startDate || '2026-03-03'"
-							:endDate="event.startDate || '2026-03-03'"
-							:startTime="event.startTime || '13:00'"
-							:endTime="event.endTime || '17:00'"
-							timeZone="EST"
-							debug
-							options="'Apple','Google','iCal','Outlook.com','Yahoo'"
-							buttonsList
-							hideTextLabelButton
-							buttonStyle="round"
-							lightMode="bodyScheme"
-						></add-to-calendar-button>
+					<div class="calendar-buttons-display" v-if="urlHashLoaded" v-cloak>
+						<div class="calendar-buttons">
+							<add-to-calendar-button
+								:name="event.title || 'Event'"
+								:location="event.location || 'Location TBC'"
+								:startDate="event.startDate || '2026-03-03'"
+								:endDate="event.startDate || '2026-03-03'"
+								:startTime="event.startTime || '13:00'"
+								:endTime="event.endTime || '17:00'"
+								timeZone="EST"
+								debug
+								options="'Apple','Google','iCal','Outlook.com','Yahoo'"
+								buttonsList
+								hideTextLabelButton
+								buttonStyle="round"
+								lightMode="bodyScheme"
+							></add-to-calendar-button>
+						</div>
 					</div>
 				</section>
 				<section class="section-edit">
