@@ -81,7 +81,7 @@ input {
 }
 
 .section-edit {
-	padding-inline: 0.75em;
+	padding-inline: 13px;
 }
 
 .links-list {
@@ -173,7 +173,7 @@ input {
 
 .section-faq {
 	margin-block-start: 10rem;
-	padding-inline: 0.75em;
+	padding-inline: 13px;
 }
 .section-faq p {
 	font-size: 0.8em;
