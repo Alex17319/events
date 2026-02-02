@@ -50,6 +50,15 @@ input {
 	align-items: center;
 	padding: 3%;
 }
+@media screen and (max-width: 20rem) {
+	.event-display {
+		width: calc(min(100cqw, 100svh, 38em));
+		height: calc(min(100cqw, 100svh, 38em));
+	}
+	.event-square {
+		width: 100%;
+	}
+}
 .event-square > * {
 	display: flex;
 	justify-content: center;
