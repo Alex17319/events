@@ -24,6 +24,7 @@ input {
 
 .section-event-display {
 	width: auto;
+	max-width: calc(min(100svh, 38em));
 	container-type: inline-size;
 	margin-inline: auto;
 }
