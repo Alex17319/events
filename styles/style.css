@@ -123,13 +123,16 @@ input {
 	flex-grow: 1;
 	padding: 0.625rem;
 	background-color: #f1f1f1;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	flex-wrap: nowrap;
 }
-@media screen and (max-width: 599px) {
+/* @media screen and (max-width: 599px) {
 	.url-preview { flex-wrap: wrap; }
 }
 @media not screen and (max-width: 599px) {
 	.url-preview { flex-wrap: nowrap; }
-}
+} */
 .url-preview .url-base {
 	text-transform: uppercase;
 	font-size: 0.7em;
@@ -153,7 +156,8 @@ input {
 	color: transparent;
 }
 .url-preview code {
-	word-break: break-all;
+	/*word-break: break-all;*/
+	white-space: nowrap;
 	flex-grow: 1;
 	padding: 0;
 }
