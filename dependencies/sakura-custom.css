@@ -5,12 +5,25 @@
  */
 /* Body */
 html {
-	font-size: 62.5%;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
+/* define variables to match original sakura sizes */
+/* new-size = old-size * 0.625 */
+:root {
+	--sakura05: 0.3125rem; /* 0.5rem in sakura.css */
+	--sakura135: 0.84375rem; /* 1.35rem in sakura.css */
+	--sakura15: 0.9375rem; /* 1.5rem in sakura.css */
+	--sakura153: 0.95625rem; /* 1.53rem in sakura.css */
+	--sakura18: 1.125rem; /* 1.8rem in sakura.css */
+	--sakura20: 1.25rem; /* 2.0rem in sakura.css */
+	--sakura25: 1.5625rem; /* 2.5rem in sakura.css */
+	--sakura30: 1.875rem; /* 3.0rem in sakura.css */
+	--sakura120: 75rem; /* 120rem in sakura.css */
+}
+
 body {
-	font-size: 1.8rem;
+	font-size: var(--sakura18);
 	line-height: 1.618;
 	max-width: 38em;
 	margin: auto;
@@ -19,22 +32,22 @@ body {
 	padding: 13px;
 }
 
-@media (max-width: 684px) {
+@media (max-width: 42.75rem) { /* i.e. max-width: 38em, when font-size = var(--sakura18) = 1.125rem */
 	body {
-		font-size: 1.53rem;
+		font-size: var(--sakura153);
 	}
 }
-@media (max-width: 382px) {
+@media (max-width: 23.875rem) { /* i.e. approx max-width: 24.97em, when font-size = var(--sakura153) = 0.95625rem */
 	body {
-		font-size: 1.35rem;
+		font-size: var(--sakura135);
 	}
 }
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.1;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 	font-weight: 700;
-	margin-top: 3rem;
-	margin-bottom: 1.5rem;
+	margin-top: var(--sakura30);
+	margin-bottom: var(--sakura15);
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	-ms-word-break: break-all;
@@ -67,7 +80,7 @@ h6 {
 
 p {
 	margin-top: 0px;
-	margin-bottom: 2.5rem;
+	margin-bottom: var(--sakura25);
 }
 
 small, sub, sup {
@@ -93,7 +106,7 @@ a:hover {
 ul {
 	padding-left: 1.4em;
 	margin-top: 0px;
-	margin-bottom: 2.5rem;
+	margin-bottom: var(--sakura25);
 }
 
 li {
@@ -108,7 +121,7 @@ blockquote {
 	padding-bottom: 0.8em;
 	padding-right: 0.8em;
 	border-left: 5px solid #1d7484;
-	margin-bottom: 2.5rem;
+	margin-bottom: var(--sakura25);
 	background-color: #f1f1f1;
 }
 
@@ -120,7 +133,7 @@ img, video {
 	height: auto;
 	max-width: 100%;
 	margin-top: 0px;
-	margin-bottom: 2.5rem;
+	margin-bottom: var(--sakura25);
 }
 
 /* Pre and Code */
@@ -130,7 +143,7 @@ pre {
 	padding: 1em;
 	overflow-x: auto;
 	margin-top: 0px;
-	margin-bottom: 2.5rem;
+	margin-bottom: var(--sakura25);
 	font-size: 0.9em;
 }
 
@@ -153,7 +166,7 @@ table {
 	text-align: justify;
 	width: 100%;
 	border-collapse: collapse;
-	margin-bottom: 2rem;
+	margin-bottom: var(--sakura20);
 }
 
 td, th {
@@ -238,6 +251,6 @@ input[type=checkbox]:focus {
 
 label, legend, fieldset {
 	display: block;
-	margin-bottom: 0.5rem;
+	margin-bottom: var(--sakura05);
 	font-weight: 600;
 }
