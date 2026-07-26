@@ -48,7 +48,7 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 	gap: 0.8em;
 }
 .input-clearable button.icon-button {
-    width: calc(2em + 12px);
+	width: calc(2em + 12px);
 	min-width: calc(2em + 12px);
 	max-width: calc(2em + 12px);
 }
@@ -57,11 +57,12 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 }
 .input-clearable svg.bi-x {
 	height: 1.8em;
-    width: 1.8em;
+	width: 1.8em;
 }
 
-.icon-button.timezone-details-toggle-label, .theme-rng-regenerable button.icon-button {
-    width: calc(2em + 12px);
+.icon-button.timezone-details-toggle-label,
+.theme-inputs button.icon-button {
+	width: calc(2em + 12px);
 	min-width: calc(2em + 12px);
 	max-width: calc(2em + 12px);
 }
@@ -85,10 +86,10 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 .timezone-details-toggle {
 	/* hide the original checkbox (the label is shown instead). don't use "display: none" or
 	 * "visibility: hidden" as those also make it get skipped when tabbing with a keyboard */
-    grid-area: toggle;
-    height: 10px;
-    width: 10px;
-    opacity: 0;
+	grid-area: toggle;
+	height: 10px;
+	width: 10px;
+	opacity: 0;
 	z-index: -1;
 }
 .timezone-details-toggle-label {
@@ -97,7 +98,7 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 .timezone-details {
 	display: flex;
 	flex-flow: column nowrap;
-    gap: 0.4em;
+	gap: 0.4em;
 	font-size: 0.8em;
 	grid-area: details;
 	height: 0;
@@ -129,57 +130,89 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 .timezone-details-toggle:focus-visible + .timezone-details-toggle-label {
 	/* outline the label whenever anyone tabs to the original checkbox */
 	border: 1px solid #1d7484;
-    outline: 0;
+	outline: 0;
 }
 .timezone-details-toggle-label svg.bi-info-circle {
 	height: 1.3em;
-    width: 1.3em;
+	width: 1.3em;
 }
 .timezone-details-heading {
 	margin-top: 0.8rem;
 }
 
-.theme-rng-regenerable {
+.theme-inputs, .theme-seed-inputs {
 	display: flex;
 	flex-direction: row;
 	gap: 0.8em;
 }
-.theme-rng-regenerable button.icon-button {
+.theme-inputs .search-and-select-box {
+	flex: 1;
+	margin-block-end: 10px;
+}
+.theme-seeds .font-seed-input {
+	min-width: 4em;
+}
+.theme-inputs button.icon-button {
 	margin-bottom: 10px;
 }
-.theme-rng-regenerable button.icon-button.floating-regenerate-button {
+.theme-inputs .floating-theme-buttons {
 	position: fixed;
 	z-index: 10;
-	aspect-ratio: 1;
-    margin: 0;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 1rem;
 	bottom: 1rem;
     left: 1rem;
+	/* make the floating theme buttons hidden by default, then slide in and out smoothly when the edit section is expanded/collapsed */
+	visibility: hidden;
+	transform: translate(-4em, 4em);
+	transition: transform 0.15s ease-in-out, visibility 0.25s;
+}
+.theme-inputs .floating-theme-buttons .icon-button {
+	aspect-ratio: 1;
+	margin: 0;
 	box-shadow:
 		0 0.1cqw 0.2cqw hsl(0deg 0% 0% / 0.1),
 		0 0.3cqw 0.4cqw hsl(0deg 0% 0% / 0.1),
 		0 0.4cqw 0.8cqw hsl(0deg 0% 0% / 0.1),
 		0 1.0cqw 1.6cqw hsl(0deg 0% 0% / 0.1),
 		0 2.0cqw 3.2cqw hsl(0deg 0% 0% / 0.15);
-	/* make the floating regenerate button hidden by default, then slide in and out smoothly when the edit section is expended/collapsed */
-	visibility: hidden;
-	transform: translate(-4em, 4em);
-	transition: transform 0.15s ease-in-out, visibility 0.25s;
 }
-.section-collapsible.section-edit .section-heading-toggle:checked + .section-heading-toggle-label + .section-collapse .floating-regenerate-button {
+.section-collapsible.section-edit .section-heading-toggle:checked + .section-heading-toggle-label + .section-collapse .floating-theme-buttons {
 	visibility: visible;
 	transform: none;
 }
-.section-edit .floating-regenerate-button:focus-visible {
+.section-edit .floating-theme-buttons .icon-button:focus-visible {
 	border: none; /* hide focus. tabindex=-1 prevents tabbing to the button but it can still be focused after clicking. this styling makes the focus invisible */
 }
-.theme-rng-regenerable svg.bi-arrow-repeat {
+.theme-inputs svg.bi-arrow-repeat {
 	height: 1.3em;
-    width: 1.3em;
+	width: 1.3em;
 }
-.section-edit .input-col.image-url, .section-edit .input-col.theme {
+.theme-inputs svg.bi-file-earmark-image {
+	height: 1.3em;
+	width: 1.3em;
+}
+.theme-inputs svg.bi-file-earmark-font {
+	height: 1.3em;
+	width: 1.3em;
+}
+.theme-inputs .icon-button .hover-off {
+	display: inline;
+}
+.theme-inputs .icon-button:hover .hover-off {
+	display: none;
+}
+.theme-inputs .icon-button .hover-on {
+	display: none;
+}
+.theme-inputs .icon-button:hover .hover-on {
+	display: inline;
+}
+.section-edit .input-col.theme {
 	flex-grow: 10;
 }
-.section-edit .input-col.rng {
+.section-edit .input-col.theme-seeds {
 	flex-grow: 1;
 }
 
@@ -187,8 +220,8 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
  * so other platforms will still show the date picker (this is the best we can do) */
 .date-nopicker::-webkit-inner-spin-button,
 .date-nopicker::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
+	display: none;
+	-webkit-appearance: none;
 }
 
 .section-edit .result-button .input-col {
@@ -204,12 +237,12 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 /* copy the form input styling from sakura.css and apply this to search-and-select boxes too */
 .search-and-select-box .vs__dropdown-toggle {
 	color: #4a4a4a;
-    padding: 4px 1px 6px 1px;
-    background-color: #f1f1f1;
-    border: 1px solid #f1f1f1;
-    border-radius: 4px;
-    box-shadow: none;
-    box-sizing: border-box;
+	padding: 4px 1px 6px 1px;
+	background-color: #f1f1f1;
+	border: 1px solid #f1f1f1;
+	border-radius: 4px;
+	box-shadow: none;
+	box-sizing: border-box;
 }
 .search-and-select-box .vs__dropdown-toggle:focus-within {
 	border: 1px solid #1d7484;
@@ -221,13 +254,13 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 }
 /* fix subtly different font size inside search and select box between 'typing' and 'option selected' modes */
 .search-and-select-box .vs__selected, .search-and-select-box .vs__selected:focus {
-    line-height: var(--vs-line-height);
-    font-size: var(--vs-font-size);
+	line-height: var(--vs-line-height);
+	font-size: var(--vs-font-size);
 }
 /* wrap overflow for long timezone names nicely (the default is messy) */
 .search-and-select-box .vs__selected-options {
 	flex-wrap: nowrap;
-    container-type: inline-size;
+	container-type: inline-size;
 }
 .search-and-select-box .vs__selected {
 	max-width: 90%;

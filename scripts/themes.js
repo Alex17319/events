@@ -64,6 +64,7 @@ class ThemesDB {
 
   static getTheme(name) {
     const themeInfo = ThemesDB.#themeLog.filter(x => x.name === name);
+    if (themeInfo.length == 0) return null;
     const fontLogs = themeInfo.filter(x => x.font);
     const imageLogs = themeInfo.filter(x => x.image);
     return new Theme(name, imageLogs, fontLogs);
@@ -77,13 +78,13 @@ class Theme {
     this.fontLogs = fontLogs;
   }
 
-  chooseAppearance(seedDate) {
-    if (!/\d\d\d\d-\d\d-\d\d/.test(seedDate)) return null;
+  chooseAppearance(bgSeed, fontSeed) {
+    if (!/\d\d\d\d-\d\d-\d\d/.test(bgSeed)) return null;
     
-    const rng = RandomUtils.getDeterministicRNG(seedDate);
+    const rng = RandomUtils.getDeterministicRNG(bgSeed);
     
-    const images = this.imageLogs?.filter(x => new Date(x.date) <= new Date(seedDate));
-    const fonts = this.fontLogs?.filter(x => new Date(x.date) <= new Date(seedDate));
+    const images = this.imageLogs?.filter(x => new Date(x.date) <= new Date(bgSeed));
+    const fonts = this.fontLogs?.filter(x => new Date(x.date) <= new Date(bgSeed));
     
     const imageLog = images[RandomUtils.randomInt(rng, 0, images.length - 1)];
     const fontLog = fonts[RandomUtils.randomInt(rng, 0, fonts.length - 1)];
