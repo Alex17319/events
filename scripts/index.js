@@ -31,12 +31,14 @@ const app = Vue.createApp({
     IconInfo: { template: "#icon-info" },
     IconRepeat: { template: "#icon-repeat" },
     IconChevronRight: { template: "#icon-chevron-right" },
+    IconFileEarmarkImage: { template: "#icon-file-earmark-image" },
+    IconFileEarmarkFont: { template: "#icon-file-earmark-font" },
     IconPrideFlag: { template: "#icon-pride-flag" },
     IconAgplLogo: { template: "#icon-agpl-logo" },
   },
   data() {
     return {
-      event: new Event("", "", "", "", "", "", DateUtils.getLocalTimeZone(), "", "", "", "", DateUtils.getTodaysDateString(), ""),
+      event: new Event("", "", "", "", "", "", DateUtils.getLocalTimeZone(), "", "", "", "", DateUtils.getTodaysDateString(), 1, ""),
       urlBase: this.getUrlBase(),
       urlHash: window.location.hash.replace(/^#/, ''),
       urlHost: window.location.host,
@@ -85,12 +87,14 @@ const app = Vue.createApp({
       const match = datetime?.match(/\d\d\d\d-\d\d-\d\dT\d\d:\d\d/);
       return match && match[0]?.replace(/\D/g, '') || '';
     },
-    formatTheme(theme, rng) {
+    formatTheme(theme, bgSeed, fontSeed) {
       if (!theme) return "";
-      if (!rng) return "";
-      if (!/\d\d\d\d-\d\d-\d\d/.test(rng)) return "";
+      if (!bgSeed) return "";
+      if (!fontSeed) return "";
+      if (!/\d\d\d\d-\d\d-\d\d/.test(bgSeed)) return "";
       if (!/^[a-zA-Z\-]+$/.test(theme)) return "";
-      return theme.toLowerCase() + this.formatDate(rng);
+      if (typeof fontSeed !== 'number') return "";
+      return theme.toLowerCase() + this.formatDate(bgSeed) + fontSeed;
     },
     escapeEventStringPart(str) {
       // Unfriendly characters are escaped in the same way as a URI except using '~' rather than '%'.
@@ -162,9 +166,19 @@ const app = Vue.createApp({
       if (arr.length < 3) { arr = str.split("|"); } // temporary -- try the old format instead
       if (arr.length < 3) return null; // require at least a title, location, and start time  
       
-      const themeMatch = arr[10] && arr[10].match(/^(?<theme>[a-zA-Z\-]+)(?<rng>\d\d\d\d\d\d\d\d)$/);
+      switch (arr[0]) {
+        case 'v1':
+          return this.parseEventArr_v1(arr);
+          break;
+        default:
+          return this.parseEventArr_v0(arr);
+          break;
+      }
+    },
+    parseEventArr_v0(arr) {
+      const themeMatch = arr[10] && arr[10].match(/^(?<theme>[a-zA-Z\-]+)(?<seed>\d\d\d\d\d\d\d\d)$/);
       const theme = themeMatch && themeMatch.groups.theme?.toLowerCase();
-      const rng = themeMatch && themeMatch.groups.rng && this.parseDate(themeMatch.groups.rng) || DateUtils.getTodaysDateString();
+      const seed = themeMatch && themeMatch.groups.seed && this.parseDate(themeMatch.groups.seed) || DateUtils.getTodaysDateString();
 
       // Reject this event string if there are malformed dates or times (it has probably been parsed wrong, i.e. we should have used unibinDecode)
       // Don't reject if the dates/times are absent entirely; that's OK
@@ -189,9 +203,43 @@ const app = Vue.createApp({
         this.parseDatetime(arr[8])?.date || "", // rsvpDate
         this.unescapeEventStringPart(arr[9]) || "", // imageUrl
         theme || "", // theme
-        rng, // rng
+        seed, // seed
         this.unescapeEventStringPart(arr[11]) || "" // description
-      )
+      );
+    },
+    parseEventArr_v1(arr) {
+      const themeMatch = arr[11] && arr[11].match(/^(?<theme>[a-zA-Z\-]+)(?<bgSeed>\d\d\d\d\d\d\d\d)(?<fontSeed>\d+)?$/);
+      const theme = themeMatch && themeMatch.groups.theme?.toLowerCase();
+      const bgSeed = (themeMatch && themeMatch.groups.bgSeed) ? this.parseDate(themeMatch.groups.bgSeed) : DateUtils.getTodaysDateString();
+      const fontSeed = (themeMatch && themeMatch.groups.fontSeed) ? new Number(themeMatch.groups.fontSeed) : 1;
+
+      // Reject this event string if there are malformed dates or times (it has probably been parsed wrong, i.e. we should have used unibinDecode)
+      // Don't reject if the dates/times are absent entirely; that's OK
+      const startDate = this.parseDate(arr[2]);
+      const startTime = this.parseTime(arr[4]);
+      const endDate = this.parseDate(arr[5]);
+      const endTime = this.parseTime(arr[6]);
+      if (arr[3] && !startDate) return null;
+      if (arr[4] && !startTime) return null;
+      if (arr[5] && !endDate) return null;
+      if (arr[6] && !endTime) return null;
+      
+      return new Event(
+        this.unescapeEventStringPart(arr[1]) || "", // title
+        this.unescapeEventStringPart(arr[2]) || "", // location
+        startDate || "", // startDate
+        startTime || "", // startTime
+        endDate || "", // endDate
+        endTime || "", // endTime
+        this.unescapeEventStringPart(arr[7]) || "", // timezone
+        this.unescapeEventStringPart(arr[8]) || "", // rsvp
+        this.parseDatetime(arr[9])?.date || "", // rsvpDate
+        this.unescapeEventStringPart(arr[10]) || "", // imageUrl
+        theme || "", // theme
+        bgSeed, // bgSeed
+        fontSeed, //fontSeed
+        this.unescapeEventStringPart(arr[12]) || "" // description
+      );
     },
     async loadEventFromUrlHash(urlHash) {
       // There are several ways the event string might be encoded in the url hash
@@ -278,6 +326,7 @@ const app = Vue.createApp({
   computed: {
     eventString() {
       return (
+        "v1;" +
         this.escapeEventStringPart(this.event.title) + ";" +
         this.escapeEventStringPart(this.event.location) + ";" +
         this.formatDate(this.event.startDate) + ";" +
@@ -288,7 +337,7 @@ const app = Vue.createApp({
         this.escapeEventStringPart(this.event.rsvp) + ";" +
         this.formatDate(this.event.rsvpDate) + ";" +
         this.escapeEventStringPart(this.event.imageUrl) + ";" +
-        this.formatTheme(this.event.theme, this.event.rng) + ";" +
+        this.formatTheme(this.event.theme, this.event.bgSeed, this.event.fontSeed) + ";" +
         this.escapeEventStringPart(this.event.description)
       );
     },
@@ -302,7 +351,7 @@ const app = Vue.createApp({
       return this.event?.theme && ThemesDB.getTheme(this.event.theme) || null;
     },
     themeAppearance() {
-      return this.themeInfo?.chooseAppearance(this.event.rng);
+      return this.themeInfo?.chooseAppearance(this.event.bgSeed, this.event.fontSeed);
     },
     custombackgroundImage() {
       // Generate CSS code for displaying a custom background image from a user-defined url

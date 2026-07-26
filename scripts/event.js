@@ -18,7 +18,7 @@
 "use strict";
 
 class Event {
-  constructor(title, location, startDate, startTime, endDate, endTime, timezone, rsvp, rsvpDate, imageUrl, theme, rng, description) {
+  constructor(title, location, startDate, startTime, endDate, endTime, timezone, rsvp, rsvpDate, imageUrl, theme, bgSeed, fontSeed, description) {
     this.state = Vue.reactive({
       title: title,
       location: location,
@@ -31,7 +31,8 @@ class Event {
       rsvpDate: rsvpDate,
       imageUrl: imageUrl,
       theme: theme,
-      rng: rng,
+      bgSeed: bgSeed,
+      fontSeed: fontSeed,
       description: description,
     });
 
@@ -149,11 +150,6 @@ class Event {
 
     addComputed('startDateTimeWithOffset', () => s.utcStartDateObj && new Intl.DateTimeFormat(undefined, {timeZone: s.timezone, dateStyle: 'short', timeStyle: 'long'}).format(s.utcStartDateObj));
     addComputed('endDateTimeWithOffset', () => s.utcEndDateObj && new Intl.DateTimeFormat(undefined, {timeZone: s.timezone, dateStyle: 'short', timeStyle: 'long'}).format(s.utcEndDateObj));
-
-    addComputed('rngSeed', () => {
-      const dateMatch = s.rng?.match(/\d\d\d\d-\d\d-\d\d/);
-      return dateMatch ? Math.floor(new Date(dateMatch[0]).getTime() / (60 * 60 * 24 * 1000)) : 0;
-    });
   }
 
   get title() { return this.state.title; }
@@ -189,15 +185,22 @@ class Event {
   get theme() { return this.state.theme; }
   set theme(x) { this.state.theme = x; }
 
-  get rng() { return this.state.rng; }
-  set rng(x) { this.state.rng = x; }
+  get bgSeed() { return this.state.bgSeed; }
+  set bgSeed(x) { this.state.bgSeed = x; }
+  
+  get fontSeed() { return this.state.fontSeed; }
+  set fontSeed(x) { this.state.fontSeed = x; }
 
   get description() { return this.state.description; }
   set description(x) { this.state.description = x; }
 
-  regenerateThemeRNG() {
-    var date = this.state.rng ? new Date(this.state.rng) : new Date();
+  useNextBackground() {
+    var date = this.state.bgSeed ? new Date(this.state.bgSeed) : new Date();
     date.setDate(date.getDate() - 1)
-    this.state.rng = date.toISOString().match(/\d\d\d\d-\d\d-\d\d/)[0];
+    this.state.bgSeed = date.toISOString().match(/\d\d\d\d-\d\d-\d\d/)[0];
+  }
+  
+  useNextFont() {
+    this.state.fontSeed += 1;
   }
 }

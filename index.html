@@ -204,29 +204,46 @@
 								</div>
 							</div>
 						</div>
-						<div class="input-row background-inputs">
-							<div class="input-col image-url">
-								<label for="image-url">Image URL</label>
-								<input type="url" id="image-url" name="image-url" v-model="event.imageUrl" placeholder="https://example.com/event-poster.png">
-							</div>
+						<div class="input-row">
 							<div class="input-col theme">
 								<label for="theme">Theme</label>
-								<v-select id="theme" name="theme" class="search-and-select-box" v-model="event.theme" :options="possibleThemes"></v-select>
+								<div class="theme-inputs">
+									<v-select id="theme" name="theme" class="search-and-select-box" v-model="event.theme" :options="possibleThemes"></v-select>
+									<button type="button" class="icon-button button-light" aria-label="Change background" title="Change background" v-on:click="event.useNextBackground()">
+										<icon-file-earmark-image class="hover-off"></icon-file-earmark-image>
+										<icon-repeat class="hover-on"></icon-repeat>
+									</button>
+									<button type="button" class="icon-button button-light" aria-label="Change font" title="Change font" v-on:click="event.useNextFont()">
+										<icon-file-earmark-font class="hover-off"></icon-file-earmark-font>
+										<icon-repeat class="hover-on"></icon-repeat>
+									</button>
+									<div class="floating-theme-buttons">
+										<button type="button" class="icon-button button-dark" tabindex="-1" aria-label="Change background" title="Change background" v-on:click="event.useNextBackground()">
+											<icon-file-earmark-image class="hover-off"></icon-file-earmark-image>
+											<icon-repeat class="hover-on"></icon-repeat>
+										</button>
+										<button type="button" class="icon-button button-dark" aria-label="Change font" title="Change font" v-on:click="event.useNextFont()">
+											<icon-file-earmark-font class="hover-off"></icon-file-earmark-font>
+											<icon-repeat class="hover-on"></icon-repeat>
+										</button>
+									</div>
+								</div>
 							</div>
-							<div class="input-col rng">
-								<label for="rng">
+							<div class="input-col theme-seeds">
+								<label for="bgSeed">
 									Seed
 									<a v-on:click="showThemesFaq()" href="javascript:void(0)">(Info)</a>
 								</label>
-								<div class="theme-rng-regenerable">
-									<input type="date" class="date-nopicker" :max="new Date().toISOString().match(/\d\d\d\d-\d\d-\d\d/)[0]" id="rng" name="rng" v-model="event.rng">
-									<button type="button" class="icon-button button-light" aria-label="Randomise event styling" title="Randomise event styling" v-on:click="event.regenerateThemeRNG()">
-										<icon-repeat></icon-repeat>
-									</button>
-									<button type="button" class="icon-button button-dark floating-regenerate-button" tabindex="-1" aria-label="Randomise event styling" title="Randomise event styling" v-on:click="event.regenerateThemeRNG()">
-										<icon-repeat></icon-repeat>
-									</button>
+								<div class="theme-seed-inputs">
+									<input type="date" class="date-nopicker" :max="new Date().toISOString().match(/\d\d\d\d-\d\d-\d\d/)[0]" id="bgSeed" name="bgSeed" v-model="event.bgSeed">
+									<input type="number" class="font-seed-input" min="1" step="1" id="fontSeed" name="fontSeed" v-model="event.fontSeed">
 								</div>
+							</div>
+						</div>
+						<div class="input-row">
+							<div class="input-col image-url">
+								<label for="image-url">Background Image URL (advanced)</label>
+								<input type="url" id="image-url" name="image-url" v-model="event.imageUrl" placeholder="https://example.com/event-poster.png">
 							</div>
 						</div>
 						<div class="input-row">
@@ -527,6 +544,16 @@
 		<template id="icon-chevron-right">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-chevron-right">
 				<use xlink:href="icons/bootstrap-icons.svg#icon-chevron-right"></use>
+			</svg>
+		</template>
+		<template id="icon-file-earmark-image">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-file-earmark-image">
+				<use xlink:href="icons/bootstrap-icons.svg#icon-file-earmark-image"></use>
+			</svg>
+		</template>
+		<template id="icon-file-earmark-font">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-file-earmark-font">
+				<use xlink:href="icons/bootstrap-icons.svg#icon-file-earmark-font"></use>
 			</svg>
 		</template>
 		<template id="icon-pride-flag">
