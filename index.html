@@ -31,6 +31,7 @@
 		<link rel="stylesheet" href="styles/edit.css?v=1.0">
 		<link rel="stylesheet" href="styles/links.css?v=1.0">
 		<link rel="stylesheet" href="styles/faq.css?v=1.0">
+		<link rel="stylesheet" href="styles/new-event.css?v=1.0">
 		<link rel="stylesheet" href="styles/footer.css?v=1.0">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -421,6 +422,9 @@
 							publish, or otherwise endorse each event link.
 						</p>
 					</div>
+				</section>
+				<section v-if="!createModeCurrently" class="section-new-event">
+					<a type="button" class="button button-light" href="#">New event</a>
 				</section>
 			</main>
 			<footer>

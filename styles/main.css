@@ -176,25 +176,38 @@ a:hover {
 	background-color: #f1f1f1;
 	color: #4a4a4a;
 }
+a.button-light:visited {
+	color: #4a4a4a;
+}
 .button-dark {
 	background-color: #a57bb0;
 	color: white;
 }
-.button:hover, .icon-button:hover {
+a.button-dark:visited {
+	color: white;
+}
+.button:hover,
+.icon-button:hover,
+a.button:hover,
+a.icon-button:hover {
 	outline: 0;
+	border: none;
 }
 .button-light:hover {
 	background-color: #a57bb0;
 	color: white;
 }
+a.button-light:visited:hover {
+	color: white;
+}
 .button-dark:hover {
 	background-color: #794188;
 }
-.button-light:focus-visible {
-	border: 1px solid #1d7484;
-	outline: 0;
+.button-light:focus-visible,
+a.button-light:focus-visible {
+	outline: 1px solid #1d7484;
 }
-.button-dark:focus-visible {
-	border: 2px solid black;
-	outline: 0;
+.button-dark:focus-visible,
+a.button-dark:focus-visible {
+	outline: 2px solid black;
 }
