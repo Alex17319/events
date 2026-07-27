@@ -28,8 +28,19 @@ class RandomUtils {
   static randomInt(rng, min, max) {
     return Math.floor(rng.next() * (max + 1 - min) + min);
   }
+  
+  /* Durstenfeld shuffle algorithm, from https://stackoverflow.com/a/12646864
+   * License: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+   * Authors: Laurens Holst, Ben Carp, Richard Durstenfeld, Ronald Fisher and Frank Yates
+   */
+  static shuffleArray(array, rng) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(rng.next() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
 
-  /* SplitMix32 psuedo-random number generator
+  /* SplitMix32 psuedo-random number generator, from https://stackoverflow.com/a/47593316
    * License: Public Domain
    * Authors: Sebastiano Vigna (vigna@acm.org), tommyettinger, bryc, et al
    * See: https://xorshift.di.unimi.it/splitmix64.c
@@ -48,7 +59,10 @@ class RandomUtils {
     }
   }
 
-  /* cyrb53 (c) 2018 bryc (github.com/bryc)
+  /* 53 bit hash function, from https://stackoverflow.com/a/52171480
+   * See: https://github.com/bryc/code/blob/master/jshash/experimental/cyrb53.js
+   *
+   * cyrb53 (c) 2018 bryc (github.com/bryc)
    * License: Public domain (or MIT if needed). Attribution appreciated.
    * A fast and simple 53-bit string hash function with decent collision resistance.
    * Largely inspired by MurmurHash2/3, but with a focus on speed/simplicity.
