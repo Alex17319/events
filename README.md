@@ -29,7 +29,7 @@ Strangers: Please submit a [Ticket](https://github.com/amorphea/v/issues) or a [
  - The event details will display across the middle of the artwork, so please keep that area uncluttered
  - The event details won't stretch all the way to the edge of the artwork, so you're welcome to make the margin around the edges as busy & cluttered as you like. You can customise how large this margin is, so that the text is constrained to only occupy a smaller area
  - You can customise the font colour and text shadow, to help the text stand out on different colour backgrounds
- - You can't customise the font itself -- each background image is combined with multiple randomly-chosen fonts, based on the theme selected by the user
+ - You can't customise the font itself, as each background image is combined with multiple fonts
 
 ### Adding new themes
 
