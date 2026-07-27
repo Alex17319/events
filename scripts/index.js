@@ -206,7 +206,8 @@ const app = Vue.createApp({
         this.parseDatetime(arr[8])?.date || "", // rsvpDate
         this.unescapeEventStringPart(arr[9]) || "", // imageUrl
         theme || "", // theme
-        seed, // seed
+        seed, // bgSeed
+        1, // fontSeed
         this.unescapeEventStringPart(arr[11]) || "" // description
       );
     },
