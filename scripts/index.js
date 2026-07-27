@@ -22,6 +22,8 @@ addEventListener("hashchange", (event) => { // if the user manually edits the UR
   window.location.reload();
 })
 
+var $grevillea_version = Vue.ref(1);
+
 const app = Vue.createApp({
   components: {
     LinksSection: linksSectionComponent,
@@ -166,13 +168,14 @@ const app = Vue.createApp({
       if (arr.length < 3) { arr = str.split("|"); } // temporary -- try the old format instead
       if (arr.length < 3) return null; // require at least a title, location, and start time  
       
-      switch (arr[0]) {
-        case 'v1':
+      const version = arr[0];
+      switch (version) {
+        case '1':
+          $grevillea_version.value = 1;
           return this.parseEventArr_v1(arr);
-          break;
         default:
+          $grevillea_version.value = 0;
           return this.parseEventArr_v0(arr);
-          break;
       }
     },
     parseEventArr_v0(arr) {
@@ -215,7 +218,7 @@ const app = Vue.createApp({
 
       // Reject this event string if there are malformed dates or times (it has probably been parsed wrong, i.e. we should have used unibinDecode)
       // Don't reject if the dates/times are absent entirely; that's OK
-      const startDate = this.parseDate(arr[2]);
+      const startDate = this.parseDate(arr[3]);
       const startTime = this.parseTime(arr[4]);
       const endDate = this.parseDate(arr[5]);
       const endTime = this.parseTime(arr[6]);
@@ -326,7 +329,7 @@ const app = Vue.createApp({
   computed: {
     eventString() {
       return (
-        "v1;" +
+        "1;" +
         this.escapeEventStringPart(this.event.title) + ";" +
         this.escapeEventStringPart(this.event.location) + ";" +
         this.formatDate(this.event.startDate) + ";" +
