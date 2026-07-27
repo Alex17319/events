@@ -50,8 +50,8 @@ class ThemesDB {
 
   static #logEntry(date, name, image, font) {
     return {
-      date,
-      name,
+      date: new Date(date),
+      name: name,
       image: image ? { url: image[0], textStyling: image[1] } : null,
       font: font ? { name: font[0], url: font[1] } : null
     };
@@ -79,16 +79,77 @@ class Theme {
   }
 
   chooseAppearance(bgSeed, fontSeed) {
+    if ($grevillea_version.value === 0) {
+      return this.chooseAppearance_v0(bgSeed);
+    }
+    
     if (!/\d\d\d\d-\d\d-\d\d/.test(bgSeed)) return null;
+    if (!ValidationUtils.isNumber(fontSeed)) return null;
     
-    const rng = RandomUtils.getDeterministicRNG(bgSeed);
+    // This function is called both when the initial user selects a seed, and when a new
+    // user opens the same event link with a predetermined seed. The same background and
+    // font are produced deterministically in either case. The process is designed to be
+    // user-friendly when an initial user selects a seed.
+    //
+    // The background and font are chosen in 3 steps:
+    //
+    // 1) First, the user chooses a seed date (bgSeed). This determines which
+    //    log entries are active -- only the backgrounds added before this date
+    //    are usable
+    //
+    // 2) All currently-usable backgrounds are shuffled, using the most recent update
+    //    date as the seed for a random-number-generator. All currently-usasble fonts
+    //    are shuffled, using the number of currently-usable fonts as the seed.
+    //
+    // 3) The user chooses a background seed (bgSeed) and a font seed (fontSeed). The
+    //    seeds are used to select an entry from each shuffled array, modulo the
+    //    length of the array. Each time the user clicks a button to change the seed,
+    //    the subsequent entry in the shuffled array is selected.
+    //
+    // Note that bgSeed is used in both steps 1 and step 3, and so it affects both steps.
+    // This approach (i.e. shuffling an array in advance, then iterating through it
+    // sequentially) helps minimise repetition of the same background/font each time the
+    // user clicks a button to change the seed.
     
-    const images = this.imageLogs?.filter(x => new Date(x.date) <= new Date(bgSeed));
-    const fonts = this.fontLogs?.filter(x => new Date(x.date) <= new Date(bgSeed));
+    const bgSeedDate = new Date(bgSeed);
     
-    const imageLog = images[RandomUtils.randomInt(rng, 0, images.length - 1)];
-    const fontLog = fonts[RandomUtils.randomInt(rng, 0, fonts.length - 1)];
+    const backgrounds = this.imageLogs?.filter(x => (x.date <= bgSeedDate));
+    const fonts = this.fontLogs?.filter(x => (x.date <= bgSeedDate));
     
-    return { image: imageLog.image, font: fontLog.font };
+    const updateDates = backgrounds.map(x => x.date).concat(fonts.map(x => x.date));
+    const lastUpdate = updateDates.reduce((max, x) => x > max ? x : max, new Date('1970-01-01')); // We could use Math.max() instead of Array.reduce(), but that would convert the dates to numbers
+    
+    const bgRng = RandomUtils.getDeterministicRNG(lastUpdate);
+    const fontRng = RandomUtils.getDeterministicRNG(fonts.length);
+    
+    let bgShuffle = backgrounds.map((x, i) => i); // an array of ints [0, 1, 2, ...]
+    let fontShuffle = fonts.map((x, i) => i);    
+    RandomUtils.shuffleArray(bgShuffle, bgRng);
+    RandomUtils.shuffleArray(fontShuffle, fontRng);
+    
+    const bgSeedDay = Math.floor(bgSeedDate / (60 * 60 * 24 * 1000))
+    const lastUpdateDay = Math.floor(lastUpdate / (60 * 60 * 24 * 1000))
+    
+    const backgroundIndex = bgShuffle[(bgSeedDay - lastUpdateDay) % bgShuffle.length];
+    const fontIndex = fontShuffle[fontSeed % fontShuffle.length];
+    
+    const backgroundLogEntry = backgrounds[backgroundIndex];
+    const fontLogEntry = fonts[fontIndex];
+    
+    return { image: backgroundLogEntry.image, font: fontLogEntry.font };
+  }
+  
+  chooseAppearance_v0(seed) {
+    if (!/\d\d\d\d-\d\d-\d\d/.test(seed)) return null;
+    
+    const rng = RandomUtils.getDeterministicRNG(seed);
+    
+    const images = this.imageLogs?.filter(x => new Date(x.date) <= new Date(seed));
+    const fonts = this.fontLogs?.filter(x => new Date(x.date) <= new Date(seed));
+    
+    const imageLogEntry = images[RandomUtils.randomInt(rng, 0, images.length - 1)];
+    const fontLogEntry = fonts[RandomUtils.randomInt(rng, 0, fonts.length - 1)];
+    
+    return { image: imageLogEntry.image, font: fontLogEntry.font };
   }
 }
