@@ -116,6 +116,8 @@ class Theme {
     const backgrounds = this.imageLogs?.filter(x => (x.date <= bgSeedDate));
     const fonts = this.fontLogs?.filter(x => (x.date <= bgSeedDate));
     
+    if (backgrounds.length == 0 || fonts.length == 0) return null;
+    
     const updateDates = backgrounds.map(x => x.date).concat(fonts.map(x => x.date));
     const lastUpdate = updateDates.reduce((max, x) => x > max ? x : max, new Date('1970-01-01')); // We could use Math.max() instead of Array.reduce(), but that would convert the dates to numbers
     
