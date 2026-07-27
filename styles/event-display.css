@@ -71,6 +71,7 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 	justify-content: center;
 	align-items: center;
 	padding: 3%;
+	color: var(--theme-color);
 	text-shadow: var(--theme-shadow);
 }
 .event-square-inner > * {
@@ -104,7 +105,7 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 .event-square-inner .date-and-time .bullet-before:before {
 	content: "";
 	position: absolute;
-	background-color: white;
+	background-color: var(--theme-color);
 	box-shadow: var(--theme-shadow);
 	border-radius: 1em;
 	width: 0.3em;
