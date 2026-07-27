@@ -19,37 +19,38 @@
 
 class ThemesDB {
   static #themeLog = [
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Life Savers', 'https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap']),
-    ThemesDB.#logEntry('2026-01-01', 'preview-pride', null, ['Life Savers', 'https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Mystery Quest', 'https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Bubblegum Sans', 'https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Felipa', 'https://fonts.googleapis.com/css2?family=Felipa&display=swap" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Underdog', 'https://fonts.googleapis.com/css2?family=Underdog&display=swap" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Cabin Sketch', 'https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'preview-fineline', null, ['Cabin Sketch', 'https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', null, ['Fredericka the Great', 'https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet']),
-    ThemesDB.#logEntry('2026-01-01', 'preview-nightclub', null, ['Limelight', 'https://fonts.googleapis.com/css2?family=Limelight&display=swap']),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-001 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 17 37 / 100%) 0.1cqw 0.2cqw 0.3cqw, rgb(0 46 98 / 60%) 0px 0.2cqw 2cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-002 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 0 0 / 100%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 0 0 / 80%) 0.3cqw 0.4cqw 1cqw, rgb(0 0 0 / 75%) 0px 0.2cqw 2cqw, rgb(0 0 0 / 38%) 0px 0.4cqw 4cqw, rgb(0 0 0 / 60%) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-003 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: hsl(0deg 0% 0% / 1) 0px 0.2cqw 2cqw, hsl(40deg 100% 25% / 50%) 0px 0.4cqw 4cqw, hsl(40deg 100% 25% / 0.8) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-004 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 9 45 / 70%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 24 116 / 20%) 0px 0.2cqw 2cqw, rgb(0 34 101 / 30%) 0px 0.4cqw 4cqw, rgb(0 41 85 / 30%) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-005 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 9 45 / 90%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 34 101 / 70%) 0px 0.4cqw 4cqw'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-006 amorphea-2020 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 0 0 / 80%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 0 0 / 65%) 0px 0.2cqw 2cqw, rgba(0, 0, 0, 0.4) 0px 0.4cqw 4cqw, rgba(0, 0, 0, 0.6) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-007 amorphea-2020 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 9 45 / 70%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 24 116 / 20%) 0px 0.2cqw 2cqw, rgb(0 34 101 / 30%) 0px 0.4cqw 4cqw, rgb(0 41 85 / 30%) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-008 amorphea-2023 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 43 85 / 60%) 0px 0.2cqw 2cqw, rgb(0 71 190 / 30%) 0px 0.4cqw 4cqw, rgb(0 51 125 / 50%) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-009 amorphea-2023 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 28 55 / 60%) 0.1cqw 0.3cqw 0.5cqw, rgb(0 28 55 / 60%) 0px 0.2cqw 2cqw, rgb(0 38 103 / 30%) 0px 0.4cqw 4cqw, rgb(0 53 130 / 50%) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'nature', ['images/001-010 amorphea-2023 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: hsl(0deg 0% 0% / 1) 0.1cqw 0.3cqw 0.1cqw, hsl(0deg 0% 0% / 1) 0px 0.2cqw 2cqw, hsl(40deg 100% 25% / 70%) 0px 0.4cqw 4cqw, hsl(40deg 100% 80% / 0.8) 0px 2cqw 8cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'preview-fineline', ['images/001-011 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 10% 18% 12% 18%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'preview-fineline', ['images/001-012 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 12% 12% 12% 12%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'preview-fineline', ['images/001-013 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 14% 23% 40% 23%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'preview-pride', ['images/001-012 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 12% 12% 12% 12%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
-    ThemesDB.#logEntry('2026-01-01', 'preview-nightclub', ['https://picsum.photos/id/117/1000', 'color: white; --theme-shadow: rgb(0 0 0 / 100%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 0 0 / 80%) 0.3cqw 0.4cqw 1cqw, rgb(0 0 0 / 75%) 0px 0.2cqw 2cqw, rgb(0 0 0 / 38%) 0px 0.4cqw 4cqw, rgb(0 0 0 / 60%) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry( 1, '2026-01-01', 'nature', null, ['Life Savers', 'https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap']),
+    ThemesDB.#logEntry( 2, '2026-01-01', 'preview-pride', null, ['Life Savers', 'https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap']),
+    ThemesDB.#logEntry( 3, '2026-01-01', 'nature', null, ['Mystery Quest', 'https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap" rel="stylesheet']),
+    ThemesDB.#logEntry( 4, '2026-01-01', 'nature', null, ['Bubblegum Sans', 'https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet" rel="stylesheet']),
+    ThemesDB.#logEntry( 5, '2026-01-01', 'nature', null, ['Felipa', 'https://fonts.googleapis.com/css2?family=Felipa&display=swap" rel="stylesheet']),
+    ThemesDB.#logEntry( 6, '2026-01-01', 'nature', null, ['Underdog', 'https://fonts.googleapis.com/css2?family=Underdog&display=swap" rel="stylesheet']),
+    ThemesDB.#logEntry( 7, '2026-01-01', 'nature', null, ['Cabin Sketch', 'https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet']),
+    ThemesDB.#logEntry( 8, '2026-01-01', 'preview-fineline', null, ['Cabin Sketch', 'https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap" rel="stylesheet']),
+    ThemesDB.#logEntry( 9, '2026-01-01', 'nature', null, ['Fredericka the Great', 'https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet']),
+    ThemesDB.#logEntry(10, '2026-01-01', 'preview-nightclub', null, ['Limelight', 'https://fonts.googleapis.com/css2?family=Limelight&display=swap']),
+    ThemesDB.#logEntry(11, '2026-01-01', 'nature', ['images/001-001 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 17 37 / 100%) 0.1cqw 0.2cqw 0.3cqw, rgb(0 46 98 / 60%) 0px 0.2cqw 2cqw;'], null),
+    ThemesDB.#logEntry(12, '2026-01-01', 'nature', ['images/001-002 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 0 0 / 100%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 0 0 / 80%) 0.3cqw 0.4cqw 1cqw, rgb(0 0 0 / 75%) 0px 0.2cqw 2cqw, rgb(0 0 0 / 38%) 0px 0.4cqw 4cqw, rgb(0 0 0 / 60%) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(13, '2026-01-01', 'nature', ['images/001-003 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: hsl(0deg 0% 0% / 1) 0px 0.2cqw 2cqw, hsl(40deg 100% 25% / 50%) 0px 0.4cqw 4cqw, hsl(40deg 100% 25% / 0.8) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(14, '2026-01-01', 'nature', ['images/001-004 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 9 45 / 70%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 24 116 / 20%) 0px 0.2cqw 2cqw, rgb(0 34 101 / 30%) 0px 0.4cqw 4cqw, rgb(0 41 85 / 30%) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(15, '2026-01-01', 'nature', ['images/001-005 amorphea-2019 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 9 45 / 90%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 34 101 / 70%) 0px 0.4cqw 4cqw'], null),
+    ThemesDB.#logEntry(16, '2026-01-01', 'nature', ['images/001-006 amorphea-2020 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 0 0 / 80%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 0 0 / 65%) 0px 0.2cqw 2cqw, rgba(0, 0, 0, 0.4) 0px 0.4cqw 4cqw, rgba(0, 0, 0, 0.6) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(17, '2026-01-01', 'nature', ['images/001-007 amorphea-2020 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 9 45 / 70%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 24 116 / 20%) 0px 0.2cqw 2cqw, rgb(0 34 101 / 30%) 0px 0.4cqw 4cqw, rgb(0 41 85 / 30%) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(18, '2026-01-01', 'nature', ['images/001-008 amorphea-2023 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 43 85 / 60%) 0px 0.2cqw 2cqw, rgb(0 71 190 / 30%) 0px 0.4cqw 4cqw, rgb(0 51 125 / 50%) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(19, '2026-01-01', 'nature', ['images/001-009 amorphea-2023 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: rgb(0 28 55 / 60%) 0.1cqw 0.3cqw 0.5cqw, rgb(0 28 55 / 60%) 0px 0.2cqw 2cqw, rgb(0 38 103 / 30%) 0px 0.4cqw 4cqw, rgb(0 53 130 / 50%) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(20, '2026-01-01', 'nature', ['images/001-010 amorphea-2023 CC-BY-SA-4.0 1080.jpg', 'color: white; --theme-shadow: hsl(0deg 0% 0% / 1) 0.1cqw 0.3cqw 0.1cqw, hsl(0deg 0% 0% / 1) 0px 0.2cqw 2cqw, hsl(40deg 100% 25% / 70%) 0px 0.4cqw 4cqw, hsl(40deg 100% 80% / 0.8) 0px 2cqw 8cqw;'], null),
+    ThemesDB.#logEntry(21, '2026-01-01', 'preview-fineline', ['images/001-011 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 10% 18% 12% 18%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
+    ThemesDB.#logEntry(22, '2026-01-01', 'preview-fineline', ['images/001-012 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 12% 12% 12% 12%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
+    ThemesDB.#logEntry(23, '2026-01-01', 'preview-fineline', ['images/001-013 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 14% 23% 40% 23%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
+    ThemesDB.#logEntry(24, '2026-01-01', 'preview-pride', ['images/001-012 amorphea-2026 CC-BY-SA-4.0 1080.jpg', 'color: black; padding: 12% 12% 12% 12%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
+    ThemesDB.#logEntry(25, '2026-01-01', 'preview-nightclub', ['https://picsum.photos/id/117/1000', 'color: white; --theme-shadow: rgb(0 0 0 / 100%) 0.2cqw 0.3cqw 0.5cqw, rgb(0 0 0 / 80%) 0.3cqw 0.4cqw 1cqw, rgb(0 0 0 / 75%) 0px 0.2cqw 2cqw, rgb(0 0 0 / 38%) 0px 0.4cqw 4cqw, rgb(0 0 0 / 60%) 0px 2cqw 8cqw;'], null),
   ];
 
   static #possibleThemes = null;
 
-  static #logEntry(date, name, image, font) {
+  static #logEntry(num, date, name, image, font) {
     return {
+      num: num,
       date: new Date(date),
       name: name,
       image: image ? { url: image[0], textStyling: image[1] } : null,
@@ -59,7 +60,7 @@ class ThemesDB {
   
   static getPossibleThemes() {
     // get all distinct theme names. See https://stackoverflow.com/a/33121880
-    return ThemesDB.#possibleThemes || (ThemesDB.#possibleThemes = [...new Set(ThemesDB.#themeLog.map(x => x.name))]);
+    return ThemesDB.#possibleThemes || (ThemesDB.#possibleThemes = [...new Set(ThemesDB.#themeLog.map(x => x.name))].sort());
   }
 
   static getTheme(name) {
@@ -113,8 +114,8 @@ class Theme {
     
     const bgSeedDate = new Date(bgSeed);
     
-    const backgrounds = this.imageLogs?.filter(x => (x.date <= bgSeedDate));
-    const fonts = this.fontLogs?.filter(x => (x.date <= bgSeedDate));
+    const backgrounds = this.imageLogs?.filter(x => (x.date <= bgSeedDate)).toSorted((a, b) => a.num - b.num);
+    const fonts = this.fontLogs?.filter(x => (x.date <= bgSeedDate)).toSorted((a, b) => a.num - b.num);
     
     if (backgrounds.length == 0 || fonts.length == 0) return null;
     
