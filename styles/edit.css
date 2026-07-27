@@ -66,6 +66,11 @@ along with Grevillea. If not, see <https://www.gnu.org/licenses/>.
 	min-width: calc(2em + 12px);
 	max-width: calc(2em + 12px);
 }
+.theme-inputs .floating-theme-buttons button.icon-button {
+	width: calc(2.2em + 12px);
+	min-width: calc(2.2em + 12px);
+	max-width: calc(2.2em + 12px);
+}
 
 .section-edit .input-col.title {
 	flex-grow: 2;
