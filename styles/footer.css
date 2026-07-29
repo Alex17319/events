@@ -21,47 +21,81 @@ footer {
 	background-color: #a57bb0;
 	color: white;
 	font-size: 0.8em;
-	padding-top: 3rem;
-	padding-bottom: 4rem;
+	padding-top: 3.5rem;
+	padding-bottom: 4.5rem;
 }
 
 .footer-content {
 	padding-inline: 13px;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	flex-flow: column nowrap;
+	gap: 1rem;
+}
+
+.footer-title {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1rem;
+	align-items: center;
+	padding-bottom: 1.5rem;
+}
+.footer-grevillea-icon {
+	height: 3rem;
+	width: 3rem;
+	background: white;
+	border-radius: 2rem;
+}
+.footer-grevillea-icon > div {
+	width: 60%;
+	height: 60%;
+	margin: 18% 18% 22% 22%;
+	background-image: url("../icons/favicon/favicon.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.footer-hr {
+	height: 3px;
+	flex-grow: 1;
+	background-color: white;
+}
+
+.footer-body {
+	display: flex;
+	flex-flow: row nowrap;
 	align-items: center;
 	gap: 1rem;
 }
-.footer-content .footer-text {
+.footer-body .footer-text {
 	flex: 1 1 20rem;
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 1rem;
 }
-.footer-content .footer-text a {
+
+.footer-links a {
 	color: white;
 	border-bottom: 1px solid white;
 }
-.footer-content .footer-text a:hover {
+.footer-links a:hover {
 	color: white;
 	border-bottom: 2px solid white;
 }
-.footer-content .footer-text a:visited {
+.footer-links a:visited {
 	color: white;
 	border-bottom: 1px solid white;
 }
-.footer-content .footer-links {
+.footer-links {
 	display: flex;
 	flex-flow: row wrap;
 	column-gap: 1.6em;
 	overflow: clip;
 }
 /* add bullets automatically between footer items. based on https://stackoverflow.com/a/31220698 */
-.footer-content .footer-links > span {
+.footer-links > span {
 	position: relative;
 }
-.footer-content .footer-links > span:before {
+.footer-links > span:before {
 	content: "";
 	position: absolute;
 	background-color: white;
@@ -75,7 +109,8 @@ footer {
 	top: 50%;
 	bottom: 50%;
 }
-.footer-content .footer-icons-area {
+
+.footer-body .footer-icons-area {
 	flex: 0 100 max-content;
 	display: flex;
 	flex-direction: row;
@@ -85,7 +120,7 @@ footer {
 	justify-content: center;
 	gap: 1rem;
 }
-.footer-content .footer-icon {
+.footer-body .footer-icon {
 	display: flex;
 	padding: 0;
 	margin: 0;
@@ -95,20 +130,23 @@ footer {
 	align-items: center;
 	justify-content: center;
 }
-.footer-content .footer-icon svg {
-	border-radius: 0.5rem;
+.footer-body .footer-icon svg {
 	height: calc((325 / 512) * 4rem);
 	width: calc((512 / 512) * 4rem);
 }
-.footer-content .footer-icon-rect {
+.footer-body .footer-icon-rect {
 	height: 3rem;
 }
-.footer-content .footer-icon-circle {
+.footer-body .footer-icon-rect svg {
+	border-radius: 0.5rem;
+}
+.footer-body .footer-icon-circle {
 	height: 5rem;
 	background: white;
 	border-radius: 6rem;
 }
-.footer-content a.footer-icon:hover, .footer-content a.footer-icon:visited {
+.footer-body a.footer-icon:hover,
+.footer-body a.footer-icon:visited {
 	color: inherit;
 	border-bottom: none;
 }

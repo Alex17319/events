@@ -106,7 +106,8 @@ const calendarButtonsComponent = {
 	computed: {
 		extendedDescription() {
 			return this.joinTruthyStrings(". ", this.event.rsvpString, this.event.description, this.eventUrl ? "View online: " + this.eventUrl.extendedUrl : null);
-			// Note: If the URL is added to google calendar with just a '#' instead of a '/#', then it sometimes doesn't get recognised as a URL -- so we include the '/' here to prevent that
+			// Note: If the URL is added to google calendar with just a '#' instead of a '/#', then it sometimes doesn't get recognised as a URL
+      // The extendedUrl variable includes a '/' to prevent this issue
 		},
 		multilineExtendedDescription() {
 			return this.joinTruthyStrings("\n\n", this.event.rsvpString, this.event.description, this.eventUrl ? "View online: " + this.eventUrl.extendedUrl : null);
