@@ -27,7 +27,7 @@ const calendarButtonsComponent = {
 	},
 	props: {
 		event: Event,
-		eventUrl: String,
+		eventUrl: EventUrlInfo,
 	},
 	data() {
 		return { }
@@ -105,10 +105,11 @@ const calendarButtonsComponent = {
 	},
 	computed: {
 		extendedDescription() {
-			return this.joinTruthyStrings(". ", this.event.rsvpString, this.event.description, this.eventUrl ? "View online: https://" + this.eventUrl : null);
+			return this.joinTruthyStrings(". ", this.event.rsvpString, this.event.description, this.eventUrl ? "View online: https://" + this.eventUrl.urlBase + '/#' + this.eventUrl.urlHash : null);
+			// Note: If the URL is added to google calendar with just a '#' instead of a '/#', then it sometimes doesn't get recognised as a URL -- so we include the '/' here to prevent that
 		},
 		multilineExtendedDescription() {
-			return this.joinTruthyStrings("\n\n", this.event.rsvpString, this.event.description, this.eventUrl ? "View online: https://" + this.eventUrl : null);
+			return this.joinTruthyStrings("\n\n", this.event.rsvpString, this.event.description, this.eventUrl ? "View online: https://" + this.eventUrl.urlBase + '/#' + this.eventUrl.urlHash : null);
 		},
 		isAndroid() {
 			return navigator.userAgent.toLowerCase().indexOf('android') > -1;
@@ -275,7 +276,7 @@ const calendarButtonsComponent = {
 			// Generate a UID (globally unique identifier) using all of the event information plus the current time.
 			// The UID *must* be unique for each event *and* for each user downloading an event. Rather than just encoding
 			// the current time in plaintext, we hash it with all the event details and a random number (for extra privacy).
-			let uidSeed = [this.eventUrl, new Date().toISOString(), Math.random().toString()].join(",");
+			let uidSeed = [this.eventUrl?.fullUrl, new Date().toISOString(), Math.random().toString()].join(",");
 			let uid = RandomUtils.getDeterministicHash(uidSeed) + "" + RandomUtils.getDeterministicHash(uidSeed + "generate some more digits") + "@grevillea";
 			
 			return (
