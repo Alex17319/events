@@ -271,7 +271,7 @@
 						<h6>What is this? How do I use it?</h6>
 						<p>
 							This is <i>Grevillea</i>, a free &amp; open-source web-app for quickly sharing events,
-							currently hosted on <i v-text="urlHost"></i><span v-if="urlHost = 'grevillea.au'"> via <i>Github Pages</i></span>.
+							currently hosted on <i v-text="urlHost"></i><span v-if="urlHost == 'grevillea.au'"> via <i>Github Pages</i></span>.
 						</p>
 						<p>
 							To make an event, just open a <a href=".">new page</a>, fill out the form, copy a link,
@@ -299,8 +299,8 @@
 							selection works the way it does, and so on -- it's all designed to keep the links as short
 							as possible.
 						</p>
-						<h6 v-if="urlHost = 'grevillea.au'">Does GitHub store my data?</h6>
-						<p v-if="urlHost = 'grevillea.au'">
+						<h6 v-if="urlHost == 'grevillea.au'">Does GitHub store my data?</h6>
+						<p v-if="urlHost == 'grevillea.au'">
 							Yes. This instance of Grevillea is currently hosted on Github Pages, and GitHub
 							keeps a log of the IP addresses who access any Github Pages site. Please consult
 							<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">GitHub's policies</a>
