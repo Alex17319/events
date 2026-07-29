@@ -37,7 +37,7 @@ footer {
 	flex-flow: row nowrap;
 	gap: 1rem;
 	align-items: center;
-	padding-bottom: 1rem;
+	padding-bottom: 0.5rem;
 }
 .footer-grevillea-icon {
 	height: 3rem;
