@@ -22,6 +22,7 @@ class EventUrlInfo {
     this.urlBase = urlBase;
     this.urlHash = urlHash;
     this.fullUrl = this.urlBase + '#' + this.urlHash;
+    this.extendedUrl = 'https://' + this.urlBase + '/#' + this.urlHash;
     this.charCount = this.fullUrl.length;
     this.compatibleWithIG = this.charCount <= 245;
     this.ascii = /^[\x20-\x7E]*$/.test(this.urlHash);
