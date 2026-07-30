@@ -47,11 +47,17 @@ class ThemesDB {
     ThemesDB.#logEntry(26, '2026-01-01', 'preview-countryside', ['images/001-014 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 10% 10% 15% 10%;'], null),
     ThemesDB.#logEntry(27, '2026-01-01', 'preview-countryside', ['images/001-015 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 28% 5%;'], null),
     ThemesDB.#logEntry(28, '2026-01-01', 'preview-countryside', ['images/001-016 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 30% 5%;'], null),
+    ThemesDB.#logEntry(34, '2026-01-01', 'preview-countryside', ['images/001-017 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: white; padding: 15% 5% 15% 5%;'], null),
+    ThemesDB.#logEntry(35, '2026-01-01', 'preview-countryside', ['images/001-018 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 25% 5%;'], null),
+    ThemesDB.#logEntry(36, '2026-01-01', 'preview-countryside', ['images/001-020 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 28% 5%;'], null),
     ThemesDB.#logEntry(29, '2026-01-01', 'preview-countryside', null, ['Felipa', 'https://fonts.googleapis.com/css2?family=Felipa&display=swap']),
     ThemesDB.#logEntry(30, '2026-01-01', 'preview-countryside', null, ['Cabin Sketch', 'https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap']),
     ThemesDB.#logEntry(31, '2026-01-01', 'preview-countryside', null, ['Fredericka the Great', 'https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap']),
     ThemesDB.#logEntry(32, '2026-01-01', 'preview-countryside', null, ['Indie Flower', 'https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap']),
     ThemesDB.#logEntry(33, '2026-01-01', 'preview-countryside', null, ['Cormorant', 'https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap']),
+    ThemesDB.#logEntry(37, '2026-01-01', 'preview-seaside', ['images/001-019 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 30% 5%;'], null),
+    ThemesDB.#logEntry(38, '2026-01-01', 'preview-seaside', null, ['Felipa', 'https://fonts.googleapis.com/css2?family=Felipa&display=swap']),
+    ThemesDB.#logEntry(32, '2026-01-01', 'preview-seaside', null, ['Indie Flower', 'https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap']),
   ];
 
   static #possibleThemes = null;
