@@ -64,7 +64,6 @@ class ThemesDB {
     ThemesDB.#logEntry(43, '2026-01-01', 'countryside', null, ['Quintessential', 'https://fonts.googleapis.com/css2?family=Quintessential&display=swap']),
     ThemesDB.#logEntry(44, '2026-01-01', 'countryside', null, ['Jim Nightshade', 'https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap']),
     ThemesDB.#logEntry(46, '2026-01-01', 'countryside', null, ['Handlee', 'https://fonts.googleapis.com/css2?family=Handlee&display=swap']),
-    ThemesDB.#logEntry(47, '2026-01-01', 'countryside', null, ['Protest Revolution', 'https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap']),
     ThemesDB.#logEntry(37, '2026-01-01', 'preview-seaside', ['images/001-019 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 30% 5%;'], null),
     ThemesDB.#logEntry(38, '2026-01-01', 'preview-seaside', null, ['Felipa', 'https://fonts.googleapis.com/css2?family=Felipa&display=swap']),
     ThemesDB.#logEntry(32, '2026-01-01', 'preview-seaside', null, ['Indie Flower', 'https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap']),
