@@ -49,6 +49,7 @@ class ThemesDB {
     ThemesDB.#logEntry(39, '2026-01-01', 'preview-fineline', ['images/001-021 cez-2022 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 15% 13% 15% 13%;'], null),
     ThemesDB.#logEntry(24, '2026-01-01', 'preview-pride', ['images/001-012 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 12% 12% 12% 12%; --theme-shadow: rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw, rgb(255 255 255 / 100%) 0cqw 0cqw 0.5cqw;'], null),
     ThemesDB.#logEntry(40, '2026-01-01', 'preview-pride', ['images/001-022 amorphea-2026 CC-BY-SA-4.0 1080.png', '--theme-color: black; padding: 12% 12% 12% 12%;'], null),
+    ThemesDB.#logEntry(51, '2026-01-01', 'preview-pride', ['images/001-023 amorphea-2026 CC-BY-SA-4.0 1080.png', '--theme-color: #e7e7e7; padding: 12% 12% 12% 12%;'], null),
     ThemesDB.#logEntry(26, '2026-01-01', 'countryside', ['images/001-014 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 10% 10% 15% 10%;'], null),
     ThemesDB.#logEntry(27, '2026-01-01', 'countryside', ['images/001-015 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 28% 5%;'], null),
     ThemesDB.#logEntry(28, '2026-01-01', 'countryside', ['images/001-016 amorphea-2026 CC-BY-SA-4.0 1080.jpg', '--theme-color: black; padding: 7% 5% 30% 5%;'], null),
