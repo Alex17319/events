@@ -395,6 +395,8 @@ const app = Vue.createApp({
       let info = this.themeAppearance?.image?.url?.match(/(?<group>\d\d\d+)-(?<number>\d\d\d+) (?<author>[^ ]+)-(?<year>\d\d\d\d) (?<license>[^ ]+) (?<size>[^ ]+)/u)?.groups
       if (!info) return undefined;
       
+      info.author = decodeURIComponent(info.author.replaceAll('~', '%'));
+      
       switch (info.license) {
         case 'CC0-1.0':
           info.license = 'CC0 1.0';
